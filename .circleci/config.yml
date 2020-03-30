@@ -4,60 +4,7 @@
 #
 version: 2
 jobs:
-  build:
-    docker:
-      # Specify the version you desire here
-      - image: circleci/php:7.2-node-browsers
-
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # Using the RAM variation mitigates I/O contention
-      # for database intensive operations.
-      # - image: circleci/mysql:5.7-ram
-      #
-      # - image: redis:2.8.19
-
-    steps:
-      - checkout
-
-      # - run: sudo apt update # PHP CircleCI 2.0 Configuration File# PHP CircleCI 2.0 Configuration File sudo apt install zlib1g-dev libsqlite3-dev
-      # - run: sudo docker-php-ext-install zip
-
-      # # Download and cache dependencies
-      # - restore_cache:
-      #     keys:
-      #       # "composer.lock" can be used if it is committed to the repo
-      #       - v1-dependencies-{{ checksum "composer.json" }}
-      #       # fallback to using the latest cache if no exact match is found
-      #       - v1-dependencies-
-
-      # - run: composer install -n --prefer-dist
-
-      # - save_cache:
-      #     key: v1-dependencies-{{ checksum "composer.json" }}
-      #     paths:
-      #       - ./vendor
-      # - restore_cache:
-      #     keys:
-      #       - node-v1-{{ checksum "package.json" }}
-      #       - node-v1-
-      # - run: yarn install
-      # - save_cache:
-      #     key: node-v1-{{ checksum "package.json" }}
-      #     paths:
-      #       - node_modules
-
-      # prepare the database
-      # - run: touch storage/testing.sqlite
-      # - run: php artisan migrate --env=testing --database=sqlite_testing --force
-
-      # # run tests with phpunit or codecept
-      # #- run: ./vendor/bin/phpunit
-      # - run: ./vendor/bin/codecept build
-      # - run: ./vendor/bin/codecept run
-
-  deploy:
+  deploy-service:
     docker:
       - image: cibuilds/hugo:0.42.1
     steps:
@@ -65,9 +12,17 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - "SO:1d:c9:af:7c:4a:8d:3e:47:98:3c:be:42:98:a8:36:e5"
-      - run: |
-          ssh -oStrictHostKeyChecking=no -v $SSH_USER@$SERVER_IP "cd $SERVER_SIDE_DIR && git pull origin master && ./deploy.sh"
-    filters:
-      branches:
-        only:
-          - master
+      - run: 
+          name: Deploy application
+          command: |
+            ssh -oStrictHostKeyChecking=no -v $SSH_USER@$SERVER_IP "cd $SERVER_SIDE_DIR && git pull origin master && ./deploy.sh"
+
+workflows:
+  build-deploy:
+    jobs:
+      - deploy-service:
+          name: Deploy LMS Server
+          context: Production
+          filters:
+            branches:
+              only: master
