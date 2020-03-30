@@ -1,12 +1,17 @@
-# PHP CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-php/ for more details
-#
-version: 2
+version: 2.0
+
 jobs:
-  deploy-service:
+  build:
     docker:
-      - image: cibuilds/hugo:0.42.1
+      - image: circleci/hugo:0.42.1
+    working_directory: ~/lms
+    steps:
+      - checkout
+
+  deploy:
+    machine:
+      enabled: true
+    working_directory: ~/lms
     steps:
       - checkout
       - add_ssh_keys:
@@ -18,11 +23,13 @@ jobs:
             ssh -oStrictHostKeyChecking=no -v $SSH_USER@$SERVER_IP "cd $SERVER_SIDE_DIR && git pull origin master && ./deploy.sh"
 
 workflows:
-  build-deploy:
+  version: 2
+  build-and-deploy:
     jobs:
-      - deploy-service:
-          name: Deploy LMS Server
-          context: Production
+      - build
+      - deploy:
+          requires:
+            - build
           filters:
             branches:
               only: master
