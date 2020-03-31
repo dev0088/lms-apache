@@ -25,7 +25,7 @@ if (!isset($_GET["id"])) {
 
     <body>
         <div id="nd-widget-container" class="nd-widget-container"></div>
-        <script id="newdev-embed-script" data-message="Start Video Chat" data-agent_id="<?php echo $agentId; ?>" data-source_path="https://www.vultrwins.com/lms/" src="https://www.vultrwins.com/lms/js/widget.js" data-button-css="button_gray.css" data-avatar="../img/avatar.png" data-names="John Doe" async></script>
+        <script id="newdev-embed-script" data-message="Start Video Chat" data-agent_id="<?php echo $agentId; ?>" data-source_path="https://www.vultrwins.com/" src="https://www.vultrwins.com/js/widget.js" data-button-css="button_gray.css" data-avatar="../img/avatar.png" data-names="John Doe" async></script>
 
     </body>
 </html>
