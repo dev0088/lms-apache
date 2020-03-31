@@ -16,7 +16,7 @@ jobs:
       - run: 
           name: Deploy application
           command: |
-            ssh -oStrictHostKeyChecking=no -v ${SSH_USER}@${SERVER_IP} "cd ${SERVER_SIDE_DIR} && pwd && ls && git pull origin master && ./deploy.sh"
+            ssh -oStrictHostKeyChecking=no -v ${SSH_USER}@www.vultrwins.com "cd /var/www/vultrwins/lms && pwd && ls -al && git pull origin master && ./deploy.sh"
 
 workflows:
   version: 2
