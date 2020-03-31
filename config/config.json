@@ -13,7 +13,7 @@
     },
     "appWss": "https://www.vultrwins.com:9001/",
     "recording": {
-        "enabled": false,
+        "enabled": true,
         "download": false,
         "saveServer": false,
         "autoStart": false,
@@ -21,7 +21,7 @@
         "oneWay": false
     },
     "whiteboard": {
-        "enabled": false,
+        "enabled": true,
         "allowAnonymous": false
     },
     "transcribe": {
@@ -32,7 +32,7 @@
         "direction": "agent"
     },
     "videoScreen": {
-        "chat": false,
+        "chat": true,
         "autoAcceptAudio": false,
         "autoAcceptVideo": false,
         "greenRoom": false,
