@@ -433,36 +433,36 @@ class User extends CI_Controller {
             if($this->input->post('user_type') != 'admin') {
                 $data = $this->input->post();
                 // echo "<script type='text/javascript'>alert('$this->input->post('faculty')');</script>";
-                if($this->input->post('faculty') == 'Law & politial Science'){
-                    $data['department2'] = '';
-                    $data['department3'] = '';
-                    $data['department4'] = '';
-                }
-                if($this->input->post('faculty') == 'Sharia'){
-                    $data['department1'] = '';
-                    $data['department3'] = '';
-                    $data['department4'] = '';
-                }
-                if($this->input->post('faculty') == 'Economics'){
-                    $data['department2'] = '';
-                    $data['department1'] = '';
-                    $data['department4'] = '';
-                }
-                if($this->input->post('faculty') == 'Education'){
-                    $data['department2'] = '';
-                    $data['department3'] = '';
-                    $data['department1'] = '';
-                }
-                if($this->input->post('user_type') == 'teacher'){
-                    $data['department2'] = '';
-                    $data['department3'] = '';
-                    $data['department4'] = '';
-                    $data['department1'] = '';
-                    $data['semester'] = '';
-                    $data['class'] = '';
-                    $data['faculty'] = '';
-                    $data['father_name'] = '';
-                }
+                // if($this->input->post('faculty') == 'Law & politial Science'){
+                //     $data['department2'] = '';
+                //     $data['department3'] = '';
+                //     $data['department4'] = '';
+                // }
+                // if($this->input->post('faculty') == 'Sharia'){
+                //     $data['department1'] = '';
+                //     $data['department3'] = '';
+                //     $data['department4'] = '';
+                // }
+                // if($this->input->post('faculty') == 'Economics'){
+                //     $data['department2'] = '';
+                //     $data['department1'] = '';
+                //     $data['department4'] = '';
+                // }
+                // if($this->input->post('faculty') == 'Education'){
+                //     $data['department2'] = '';
+                //     $data['department3'] = '';
+                //     $data['department1'] = '';
+                // }
+                // if($this->input->post('user_type') == 'teacher'){
+                //     $data['department2'] = '';
+                //     $data['department3'] = '';
+                //     $data['department4'] = '';
+                //     $data['department1'] = '';
+                //     $data['semester'] = '';
+                //     $data['class'] = '';
+                //     $data['faculty'] = '';
+                //     $data['father_name'] = '';
+                // }
                 $password = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
                 $checkValue = $this->User_model->check_exists('users','email',$this->input->post('email'));
                 if($checkValue==false)  {  
