@@ -1,7 +1,8 @@
 #!/bin/bash
-sudo systemctl reload apache2.service <<<"
-$1
-"
+
+echo $1 | sudo systemctl reload apache2.service
+
+source /home/dev/.nvm/nvm.sh
 nvm use 18.15.0
 cd ./ws/server
 pm2 stop all
