@@ -8,10 +8,13 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - "1d:c9:af:7c:4a:8d:3e:47:98:3c:be:42:98:a8:36:e5"
+      - run:
+          command: |
+            echo $SSH_USER $SERVER_IP $SERVER_SIDE_DIR
       - run: 
           name: Deploy application
           command: |
-            ssh -oStrictHostKeyChecking=no -v $SSH_USER@$SERVER_IP "cd $SERVER_SIDE_DIR && git pull origin master && ./deploy.sh"
+            ssh -oStrictHostKeyChecking=no -v $SSH_USER@$SERVER_IP "cd $SERVER_SIDE_DIR && pwd && ls && git pull origin master && ./deploy.sh"
 
 workflows:
   version: 2
