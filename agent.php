@@ -110,6 +110,6 @@ if (!isset($_GET["id"])) {
                 });
             });
         </script>
-        <script src="https://www.vultrwins.com/js/loader.v2.js" data-source_path="https://www.vultrwins.com/" ></script>
+        <script src="https://www.vultrwins.com/lms/js/loader.v2.js" data-source_path="https://www.vultrwins.com/lms/" ></script>
     </body>
 </html>
