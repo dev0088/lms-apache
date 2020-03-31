@@ -14,5 +14,12 @@
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^(.*)$ index.php/$1 [L]
     
+    Options -Indexes
+         
+    RewriteCond %{SCRIPT_FILENAME} !-d
+    RewriteCond %{SCRIPT_FILENAME} !-f
+     
+    RewriteRule ^(\w+)$ ./routes.php?short=$1
+    
 </IfModule>
 
