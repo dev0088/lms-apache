@@ -37,7 +37,8 @@ class User extends CI_Controller {
     public function logout(){
         is_login();
         $this->session->unset_userdata('user_details');               
-        redirect( base_url().'user/login', 'refresh');
+        // redirect( base_url().'user/login', 'refresh');
+        redirect( base_url().'admin/logout.php', 'refresh');
     }
 
     /**
@@ -206,7 +207,8 @@ class User extends CI_Controller {
            array( 'db' => 'class_datetime', 'dt' => 0 ),
            array( 'db' => 'class_name', 'dt' => 1 ),
            array( 'db' => 'teacher', 'dt' => 2 ),
-           array( 'db' => 'class_url', 'dt' => 3 )
+           array( 'db' => 'teacher_url', 'dt' => 3 ),
+           array( 'db' => 'student_url', 'dt' => 4 )
         );
 
         $sql_details = array(

@@ -34,7 +34,8 @@
 									<th>Datetime</th>
 									<th>Subject & Class</th>
                   <th>Teacher</th>
-                  <th>Vist Class</th>
+                  <th>Class for Teacher</th>
+                  <th>Class for Student</th>
                 </tr>
               </thead>
               <tbody>
@@ -90,6 +91,12 @@
           "aLengthMenu": [[10, 25, 50, 100,500,-1], [10, 25, 50,100,500,"All"]],
           "columnDefs": [ {
              "targets": 3,
+             "render": function ( data, type, full, meta ) {
+                return '<a href="'+data+'"> Visit Class </a>';
+             }
+          },
+          {
+             "targets": 4,
              "render": function ( data, type, full, meta ) {
                 return '<a href="'+data+'"> Visit Class </a>';
              }

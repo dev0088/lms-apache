@@ -2,5 +2,5 @@
 session_start();
 unset($_SESSION["tenant"]);
 unset($_SESSION["username"]);
-header("Location:index.php");
+header("Location: https://www.vultrwins.com/lms/");
 ?>

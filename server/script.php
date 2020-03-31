@@ -81,11 +81,24 @@ function insertScheduling($agent, $visitor, $agenturl, $visitorurl, $pass, $sess
         //         # code...
         //         break;
         // }
-        $sql1 = "INSERT INTO schedule (teacher, class_name, class_datetime, class_url) "
-                . "VALUES (?, ?, ?, ?)";
-        $pdo1->prepare($sql1)->execute([$agent, $session, $datetime, $visitorurl]);
+        $stmt = $pdo->prepare('SELECT room_id FROM ' . $dbPrefix . 'rooms order by room_id desc');
+        $stmt->execute();
+        while ($r = $stmt->fetch()) {
+            $r['room_id'] = strval($r['room_id']);
+            $room_id = $r['room_id'];
+            break;
+        }
+        if ($room_id) {
+            $sql1 = "INSERT INTO schedule (room_id, teacher, class_name, class_datetime, student_url, teacher_url) "
+                . "VALUES (?, ?, ?, ?, ?, ?)";
+            $pdo1->prepare($sql1)->execute([$room_id, $agent, $session, $datetime, $visitorurl, $agenturl]);
+            
+            return 200;
+        } else {
+            return false;
+        }
+
         
-        return 200;
     } catch (Exception $e) {
         return 'Error';
     }
@@ -221,7 +234,7 @@ function getRooms($agentId = false) {
 }
 
 function deleteRoom($roomId, $agentId = false) {
-    global $dbPrefix, $pdo;
+    global $dbPrefix, $pdo, $pdo1;
     try {
         $additional = '';
         $array = [$roomId];
@@ -230,8 +243,10 @@ function deleteRoom($roomId, $agentId = false) {
             $array = [$roomId, $agentId];
         }
         $sql = 'DELETE FROM ' . $dbPrefix . 'rooms WHERE room_id = ?' . $additional;
+        $sql1 = 'DELETE FROM schedule WHERE room_id = ?';
         $pdo->prepare($sql)->execute($array);
-        return true;
+        $pdo1->prepare($sql1)->execute([$roomId]);
+	return true;
     } catch (Exception $e) {
         return false;
     }
