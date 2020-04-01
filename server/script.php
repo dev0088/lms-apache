@@ -54,33 +54,7 @@ function insertScheduling($agent, $visitor, $agenturl, $visitorurl, $pass, $sess
         // $dt = new DateTime($datetime);
         // $date = $dt->format('Y-m-d');
         // $dayOfWeek = date("l", strtotime($date));
-        // $sa_class = '';
-        // $su_class = '';
-        // $mo_class = '';
-        // $tu_class = '';
-        // $we_class = '';
-
-        // switch ($dayOfWeek) {
-        //     case 'Saturday':
-        //         $sa_class = $session;
-        //         break;
-        //     case 'Sunday':
-        //         $su_class = $session;
-        //         break;
-        //     case 'Monday':
-        //         $mo_class = $session;
-        //         break;
-        //     case 'Tuesday':
-        //         $tu_class = $session;
-        //         break;
-        //     case 'Wednesday':
-        //         $we_class = $session;
-        //         break;
-            
-        //     default:
-        //         # code...
-        //         break;
-        // }
+        
         $stmt = $pdo->prepare('SELECT room_id FROM ' . $dbPrefix . 'rooms order by room_id desc');
         $stmt->execute();
         while ($r = $stmt->fetch()) {
@@ -100,7 +74,8 @@ function insertScheduling($agent, $visitor, $agenturl, $visitorurl, $pass, $sess
 
         
     } catch (Exception $e) {
-        return 'Error';
+        //return 'Error';
+	return $e;
     }
 }
 
