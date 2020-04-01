@@ -66,12 +66,8 @@ function insertScheduling($agent, $visitor, $agenturl, $visitorurl, $pass, $sess
             $sql1 = "INSERT INTO schedule (room_id, teacher, class_name, class_datetime, student_url, teacher_url) "
                 . "VALUES (?, ?, ?, ?, ?, ?)";
             $pdo1->prepare($sql1)->execute([$room_id, $agent, $session, $datetime, $visitorurl, $agenturl]);
-            
-            return 200;
-        } else {
-            return false;
         }
-
+	return 200;
         
     } catch (Exception $e) {
         //return 'Error';
