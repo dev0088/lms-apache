@@ -70,8 +70,7 @@ function insertScheduling($agent, $visitor, $agenturl, $visitorurl, $pass, $sess
 	return 200;
         
     } catch (Exception $e) {
-        //return 'Error';
-	return $e;
+        return 'Error';
     }
 }
 
