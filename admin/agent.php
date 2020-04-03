@@ -69,12 +69,12 @@ include_once 'header.php';
             <?php if ($_SESSION["tenant"] == 'lsv_mastertenant') { ?>
                 <li><a href="#tabs-agents">Agents</a></li>
             <?php } ?>
-            <li><a href="#tabs-visitors">Visitors</a></li>
-            <li><a href="#tabs-rooms">Rooms</a></li>
-            <li><a href="#tabs-chats">Chats</a></li>
+            <!-- <li><a href="#tabs-visitors">Visitors</a></li> -->
+            <li><a href="#tabs-rooms">Classes</a></li>
+            <!-- <li><a href="#tabs-chats">Chats</a></li>
             <?php if ($_SESSION["tenant"] == 'lsv_mastertenant') { ?>
                 <li><a href="#tabs-users">Users</a></li>
-            <?php } ?>
+            <?php } ?> -->
         </ul>
         <?php if ($_SESSION["tenant"] == 'lsv_mastertenant') { ?>
             <div id="tabs-agents">
@@ -175,10 +175,10 @@ include_once 'header.php';
 
             </div>
         <?php } ?>
-        <div id="tabs-visitors">
+        <!-- <div id="tabs-visitors">
             <div id="visitors"></div> 
             
-        </div>
+        </div> -->
         <div id="tabs-rooms">
 
             <div class="divGenerate">
@@ -190,9 +190,9 @@ include_once 'header.php';
                     </tr>
                     <tr>
                         <td>Date: </td><td><input autocomplete="off" type="text" id="datetime" /></td>
-                        <td>Agent Name: </td><td><input autocomplete="off" type="text" id="names" /></td>
-                        <td>Visitor Name: </td><td><input autocomplete="off" type="text" id="visitorName" /></td>
-                        <td>Room: </td><td style="border-right: 1px solid #000;"><input autocomplete="off" type="text" id="roomName" /></td>       
+                        <td>Agent(Teacher): </td><td><input autocomplete="off" type="text" id="names" /></td>
+                        <td>Visitor: </td><td><input autocomplete="off" type="text" id="visitorName" style="background: lightgray;" disabled/></td>
+                        <td>Subject&Class: </td><td style="border-right: 1px solid #000;"><input autocomplete="off" type="text" id="roomName" /></td>       
                         <td>Video: </td><td><input style="width: 15px;" autocomplete="off" type="checkbox" id="disableVideo" value="1" /></td>
                         <td>Audio: </td><td><input style="width: 15px;" autocomplete="off" type="checkbox" id="disableAudio" value="1" /></td>
                         <td>File Transfer: </td><td style="border-right: 1px solid #000;"><input style="width: 15px;" autocomplete="off" type="checkbox" id="disableTransfer" value="1" /></td>
@@ -200,9 +200,9 @@ include_once 'header.php';
                     </tr>
                     <tr>
                         <td>Duration: </td><td><select name="duration" id="duration"><option value="">-</option><option value="15">15</option><option value="30">30</option><option value="45">45</option></select></td>
-                        <td>Agent Short URL: </td><td><input autocomplete="off" type="text" id="shortagent" /></td>
-                        <td>Visitor Short URL: </td><td><input autocomplete="off" type="text" id="shortvisitor" /></td>
-                        <td>Password: </td><td style="border-right: 1px solid #000;"><input autocomplete="new-password" type="password" id="roomPass" /></td>
+                        <td>Agent Short URL: </td><td><input autocomplete="off" type="text" id="shortagent" style="background: lightgray;" disabled/></td>
+                        <td>Visitor Short URL: </td><td><input autocomplete="off" type="text" id="shortvisitor" style="background: lightgray;" disabled/></td>
+                        <td>Password: </td><td style="border-right: 1px solid #000;"><input autocomplete="new-password" type="password" id="roomPass" style="background: lightgray;" disabled/></td>
                         <td>ScreenShare: </td><td><input style="width: 15px;" autocomplete="off" type="checkbox" id="disableScreenShare" value="1" /></td>
                         <td>Whiteboard: </td><td><input style="width: 15px;" autocomplete="off" type="checkbox" id="disableWhiteboard" value="1" /></td>
                         <td></td><td style="border-right: 1px solid #000;"></td>
@@ -210,9 +210,9 @@ include_once 'header.php';
                     </tr>
                     <tr>
                         <td colspan="16">
-                            <div id="generateBroadcastLinkModal" style="max-width: 700px !important; word-wrap: break-word;" class="modal">Broadcaster URL is opened in a new tab and visitor URL is stored in your clipboard, so you can send to your attendees. <br/> You can copy it from here: <br/> [generateBroadcastLink]</div><a href="#" id="generateBroadcastLink" class="generateButton">Start Broadcast</a>
-                            <a href="#" id="saveLink" class="generateButton">Save Room</a> 
-                            <div id="generateLinkModal" style="max-width: 700px !important; word-wrap: break-word;" class="modal">Agent URL is opened in a new tab and visitor URL is stored in your clipboard, so you can send to your attendees. <br/> You can copy it from here: <br/> [generateLink]</div><a href="#" id="generateLink" class="generateButton">Generate Room</a>
+                            <!-- <div id="generateBroadcastLinkModal" style="max-width: 700px !important; word-wrap: break-word;" class="modal">Broadcaster URL is opened in a new tab and visitor URL is stored in your clipboard, so you can send to your attendees. <br/> You can copy it from here: <br/> [generateBroadcastLink]</div><a href="#" id="generateBroadcastLink" class="generateButton">Start Broadcast</a> -->
+                            <a href="#" id="saveLink" class="generateButton">Save Class</a> 
+                            <!-- <div id="generateLinkModal" style="max-width: 700px !important; word-wrap: break-word;" class="modal">Agent URL is opened in a new tab and visitor URL is stored in your clipboard, so you can send to your attendees. <br/> You can copy it from here: <br/> [generateLink]</div><a href="#" id="generateLink" class="generateButton">Generate Room</a> -->
                         </td>
                     </tr>
                 </table>
@@ -357,7 +357,7 @@ include_once 'header.php';
             </script>
 
         </div>
-        <div id="tabs-chats">
+        <!-- <div id="tabs-chats">
             <table  id="chats_table" class="table table-bordered table-hover display nowrap dataTable dtr-inline collapsed">
                 <thead>
                     <tr>
@@ -503,7 +503,7 @@ include_once 'header.php';
                 </script>
 
             </div>
-        <?php } ?>
+        <?php } ?> -->
 
     </div>
 
