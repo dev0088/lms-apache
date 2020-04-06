@@ -36,6 +36,11 @@ class User_model extends CI_Model {
 		$this->db->where('users_id', $id);  
 		$this->db->delete('users'); 
 	}
+
+	function delete_forum($id='') {
+		$this->db->where('id', $id);  
+		$this->db->delete('forum'); 
+	}
 	
 	/**
       * This function is used to load view of reset password and varify user too 

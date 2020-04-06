@@ -21,7 +21,7 @@
             </div>
           </div>
           <!-- /.box-header -->
-          <div class="box-body">           
+          <div class="box-body" style="overflow: scroll;">           
             <table id="example1" class="cell-border example1 table table-striped table1 delSelTable">
               <thead>
                 <tr>

@@ -22,7 +22,7 @@
             </div>
           </div>
           <!-- /.box-header -->
-          <div class="box-body">           
+          <div class="box-body" style="overflow: scroll;">           
             <table id="example1" class="cell-border example1 table table-striped table1 delSelTable">
               <thead>
                 <tr>
@@ -90,7 +90,7 @@
       var add_width = $('.dataTables_filter').width()+$('.box-body .dt-buttons').width()+10;
       $('.table-date-range').css('right',add_width+'px');
 
-        $('.dataTables_info').before('<button data-base-url="<?php echo base_url().'user/delete/'; ?>" rel="delSelTable" class="btn btn-default btn-sm delSelected pull-left btn-blk-del"> <i class="fa fa-trash"></i> </button><br><br>');  
+        $('.dataTables_info').before('<button data-base-url="<?php echo base_url().'user/delete_forum/'; ?>" rel="delSelTable" class="btn btn-default btn-sm delSelected pull-left btn-blk-del"> <i class="fa fa-trash"></i> </button><br><br>');  
     }, 300);
     $("button.closeTest, button.close").on("click", function (){});
   });

@@ -601,6 +601,15 @@ class User extends CI_Controller {
        redirect(base_url().'user/userTable', 'refresh');
     }
 
+    public function delete_forum($id){
+        is_login(); 
+        $ids = explode('-', $id);
+        foreach ($ids as $id) {
+            $this->User_model->delete_forum($id); 
+        }
+       redirect(base_url().'user/forum', 'refresh');
+    }
+
     /**
      * This function is used to send invitation mail to users for registration
      * @return Void
