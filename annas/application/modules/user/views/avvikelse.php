@@ -38,7 +38,7 @@
             <div class="box-body">
               <div class="col-xs-12 box-content-input">
                 <p class="input_option">DATUM</p>
-                <input type="text" name="date" size="20" value="<?php echo (!empty($user_data['date'])?$user_data['date']:'');?>">
+                <input type="text" id="datepicker" name="date" size="20" value="<?php echo (!empty($user_data['date'])?$user_data['date']:'');?>">
               </div>
               <div class="col-xs-12 box-content-input">
                 <p class="input_option">NAMN</p><input type="text" name="customer_name" size="20" value="<?php echo (!empty($user_data['customer_name'])?$user_data['customer_name']:'');?>">
@@ -47,7 +47,7 @@
                 <p class="input_option">PERSONNUMMER</p><input type="text" name="code_number" size="20" value="<?php echo (!empty($user_data['code_number'])?$user_data['code_number']:'');?>">
               </div>
               <div class="col-xs-12 box-content-input">
-                <p class="input_option">Vem upptäckte incidenten?</p><input type="text" name="finder" size="20" value="<?php echo (!empty($user_data['finder'])?$user_data['finder']:'');?>">
+                <p class="input_option">Vem upptäckte incidenten?</p><input type="text" id="finder" name="finder" size="20" value="<?php echo (!empty($user_data['finder'])?$user_data['finder']:$usr_data['name']);?>">
               </div>
               <div class="col-xs-12 box-content-input">
                 <p class="input_option">Händelseförloppet:</p><textarea name="course" rows="10" style="width:100%"><?php echo (!empty($user_data['course'])?$user_data['course']:'');?></textarea>
@@ -70,6 +70,6 @@
 </div> 
 <script type="text/javascript">
   $(document).ready(function() {  
-    
+    $( "#datepicker" ).datepicker({ dateFormat: 'dd-mm-yy' });
   });
 </script>

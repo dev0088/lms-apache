@@ -30,6 +30,7 @@
                   <th>Namn</th>
 									<th>Personnummer</th>
                   <th>Forme</th>
+                  <th>créer par</th>
                   <th>Action</th>
                 </tr>
               </thead>

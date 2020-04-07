@@ -12,6 +12,10 @@
   <link rel="icon" href="<?php echo base_url((setting_all('favicon'))?'assets/images/'.setting_all('favicon'):'assets/images/favicon.ico');?>">
   <title><?php echo (setting_all('website'))?setting_all('website'):'Dasboard';?></title>
 
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
   <!-- Bootstrap 3.3.6 -->
   <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap.min.css');?>">
   <!-- Font Awesome -->
@@ -105,8 +109,8 @@
               
               <ul class="sidebar-menu">
                 <li class="header"><!-- MAIN NAVIGATION --></li>
-                  <li><a href="<?php echo base_url('user/forum');?>"><i class="fa fa-user mr10" style="width: 15px; height: 14px; text-align: center;"></i> <span>Forum</span></a></li>
-                  <li><a href="<?php echo base_url('user/avvikelse');?>"><i class="fa fa-user mr10" style="width: 15px; height: 14px; text-align: center;"></i> <span>AVVIKELSE</span></a></li>
+                  <li><a href="<?php echo base_url('user/forum');?>"><i class="fa fa-table"></i> <span>Forum</span></a></li>
+                  <li><a href="<?php echo base_url('user/avvikelse');?>"><i class="fa fa-book"></i> <span>AVVIKELSE</span></a></li>
                   <li class="<?=($this->router->class==="about")?"active":"not-active"?>">
                         <a href="<?php echo base_url("about"); ?>"><i class="fa fa-info-circle"></i> <span>About Us</span></a>
                     </li>

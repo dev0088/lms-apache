@@ -209,6 +209,8 @@ class User extends CI_Controller {
      */
     public function forumTable (){
         is_login();
+        $id = $this->session->userdata ('user_details')[0]->users_id;
+        $type = $this->session->userdata ('user_details')[0]->user_type;
         $table = 'forum';
         $primaryKey = 'id';
         $columns = array(
@@ -224,21 +226,29 @@ class User extends CI_Controller {
             'db'   => $this->db->database,
             'host' => $this->db->hostname
         );
-        // $where = array("user_type != 'admin'");
+        $where = '';
+        if($type != 'admin') {
+          $where = array("users_id = ".$id);
+        }
         $output_arr = SSP::complex( $_GET, $sql_details, $table, $primaryKey, $columns, $where);
         foreach ($output_arr['data'] as $key => $value) {
+            $users_id = $output_arr['data'][$key][7];
+            $result = $this->User_model->get_users($users_id);
+            $user_name = $result[0]->name;
+
             $output_arr['data'][$key][0] = '<input type="checkbox" name="selData" value="'.$output_arr['data'][$key][0].'">';
             $html_file = $output_arr['data'][$key][4];
             $form_name = $output_arr['data'][$key][6];
-            $form_id = $output_arr['data'][$key][5];
-            $output_arr['data'][$key][4] = '<a href="'.base_url().$html_file.'" style="cursor:pointer;" target="_blank"><i class="fa fa-eye" ></i></a>';
-            $output_arr['data'][$key][4] .= '<a href="'.base_url().'user/'.$form_name.'/'.$form_id.'"><i class="fa fa-pencil" data-id=""></i></a>';
+            $form_id = $output_arr['data'][$key][5];            
+            $output_arr['data'][$key][5] = '<a href="'.base_url().$html_file.'" style="cursor:pointer;" target="_blank"><i class="fa fa-eye" ></i></a>';
+            $output_arr['data'][$key][5] .= '<a href="'.base_url().'user/'.$form_name.'/'.$form_id.'"><i class="fa fa-pencil" data-id=""></i></a>';            
             
             $out_arr['data'][$key][0] = $output_arr['data'][$key][0];
             $out_arr['data'][$key][1] = $output_arr['data'][$key][1];
             $out_arr['data'][$key][2] = $output_arr['data'][$key][2];
             $out_arr['data'][$key][3] = $output_arr['data'][$key][3];
-            $out_arr['data'][$key][4] = $output_arr['data'][$key][4];
+            $out_arr['data'][$key][4] = $user_name;
+            $out_arr['data'][$key][5] = $output_arr['data'][$key][5];
         }
         echo json_encode($out_arr);
     }
@@ -397,7 +407,9 @@ class User extends CI_Controller {
           $data['user_data'] = $customer_data;
           $this->load->view('avvikelse', $data);
         } else {
-          $this->load->view('avvikelse');
+          $user['name'] = $this->session->userdata ('user_details')[0]->name;
+          $data1['usr_data'] = $user;
+          $this->load->view('avvikelse', $data1);
         }
         $this->load->view('include/footer');
     }
