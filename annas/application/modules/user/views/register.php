@@ -10,11 +10,12 @@
       </div>
       <div class="register-box-body">
         <p class="login-box-msg">Register a new membership</p>
+        <!-- 
         <?php if($this->session->flashdata("messagePr")){?>
           <div class="alert alert-info">      
             <?php echo $this->session->flashdata("messagePr")?>
           </div>
-        <?php } ?>
+        <?php } ?> -->
         <form action="<?php echo base_url().'user/registration'; ?>" method="post">
           
 						<div class="form-group has-feedback">

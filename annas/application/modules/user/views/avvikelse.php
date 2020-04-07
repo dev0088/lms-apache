@@ -7,11 +7,12 @@
 <!-- Content Header (Page header) -->
 <!-- Main content -->
   <section class="content">
+  <!-- 
   <?php if($this->session->flashdata("messagePr")){?>
     <div class="alert alert-info">      
       <?php echo $this->session->flashdata("messagePr")?>
     </div>
-  <?php } ?>
+  <?php } ?> -->
 
     <div class="row">
       <div class="col-xs-12">

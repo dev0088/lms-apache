@@ -6,11 +6,12 @@
 	  	<!-- /.login-logo -->
 	  	<div class="login-box-body">
 	    	<p class="login-box-msg">Sign in to start your session</p>
+	    	<!-- 
 			<?php if($this->session->flashdata("messagePr")){?>
 	  		<div class="alert alert-info">      
 		        <?php echo $this->session->flashdata("messagePr")?>
 		    </div>
-		    <?php } ?>
+		    <?php } ?> -->
 		    <form action="<?php echo base_url().'user/auth_user'; ?>" method="post">
 		    	<div class="form-group has-feedback">
 		    		<input type="text" name="email" class="form-control" id="" placeholder="Email">
