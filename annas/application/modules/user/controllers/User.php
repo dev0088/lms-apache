@@ -313,7 +313,7 @@ class User extends CI_Controller {
             $forum_data['customer_name'] = $this->input->post('customer_name');
             $forum_data['code_number'] = $this->input->post('code_number');
             $forum_data['form'] = 'avvikelse';
-            $forum_data['html_file'] = "avvikelse_".$customer_data['code_number']."_".$customer_data['date']."_".$customer_data['finder'].".html";
+            $forum_data['html_file'] = "data/avvikelse_".$customer_data['code_number']."_".$customer_data['date']."_".$customer_data['finder'].".html";
             $forum_data['form_id'] = $customer_id;
             $forum_data['users_id'] = $customer_data['users_id'];
             if( !empty($id) ) {
@@ -364,7 +364,7 @@ class User extends CI_Controller {
             <!-- /.box -->
             <?php
             // Get the content that is in the buffer and put it in your file //
-            file_put_contents("avvikelse_".$customer_data['code_number']."_".$customer_data['date']."_".$customer_data['finder'].".html", ob_get_contents());
+            file_put_contents("data/avvikelse_".$customer_data['code_number']."_".$customer_data['date']."_".$customer_data['finder'].".html", ob_get_contents());
             ?>
 
             <?php
