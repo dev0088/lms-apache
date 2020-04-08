@@ -242,7 +242,7 @@ class User extends CI_Controller {
             $output_arr['data'][$key][6] = '<a href="'.base_url().$html_file.'" class ="mClass" style="cursor:pointer;" target="_blank"><i class="fa fa-eye" ></i></a>';
             if($type == 'admin') {
               $output_arr['data'][$key][6] .= '<a href="'.base_url().'user/'.$form_name.'/'.$form_id.'" class ="mClass"><i class="fa fa-pencil" data-id=""></i></a>';
-              $output_arr['data'][$key][6] .= '<select onclick="changeForumstatus(this, '.$output_arr['data'][$key][0].')"><option value="actif">Actif</option><option value="inactif">Inactif</option></select>';
+              $output_arr['data'][$key][6] .= '<select onchange="changeForumstatus(this, '.$output_arr['data'][$key][0].');"><option hidden disabled selected value>- Statut -</option><option value="actif">Actif</option><option value="inactif">Inactif</option></select>';
             } else {
               if($output_arr['data'][$key][8] != 'actif'){
                 $output_arr['data'][$key][6] .= '<a href="'.base_url().'user/'.$form_name.'/'.$form_id.'" class ="mClass"><i class="fa fa-pencil" data-id=""></i></a>';
