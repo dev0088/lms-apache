@@ -217,7 +217,8 @@ class User extends CI_Controller {
            array( 'db' => 'id', 'dt' => 0 ),array( 'db' => 'customer_name', 'dt' => 1 ),
                     array( 'db' => 'code_number', 'dt' => 2 ), array( 'db' => 'form', 'dt' => 3 ),
                     array( 'db' => 'html_file', 'dt' => 4 ), array( 'db' => 'form_id', 'dt' => 5 ),
-                    array( 'db' => 'form', 'dt' => 6 ), array( 'db' => 'users_id', 'dt' => 7 )
+                    array( 'db' => 'form', 'dt' => 6 ), array( 'db' => 'users_id', 'dt' => 7 ),
+                    array( 'db' => 'status', 'dt' => 8 )
         );
 
         $sql_details = array(
@@ -228,29 +229,45 @@ class User extends CI_Controller {
         );
         $where = '';
         if($type != 'admin') {
-          $where = array("users_id = ".$id);
+          $where = array("users_id = ".$id, "status = 'actif'");
         }
-        $output_arr = SSP::complex( $_GET, $sql_details, $table, $primaryKey, $columns, $where);
+        $output_arr = SSP::complex( $_GET, $sql_details, $table, $primaryKey, $columns, $where, '', 'OR');
         foreach ($output_arr['data'] as $key => $value) {
             $users_id = $output_arr['data'][$key][7];
             $result = $this->User_model->get_users($users_id);
             $user_name = $result[0]->name;
-
-            $output_arr['data'][$key][0] = '<input type="checkbox" name="selData" value="'.$output_arr['data'][$key][0].'">';
             $html_file = $output_arr['data'][$key][4];
             $form_name = $output_arr['data'][$key][6];
             $form_id = $output_arr['data'][$key][5];            
-            $output_arr['data'][$key][5] = '<a href="'.base_url().$html_file.'" style="cursor:pointer;" target="_blank"><i class="fa fa-eye" ></i></a>';
-            $output_arr['data'][$key][5] .= '<a href="'.base_url().'user/'.$form_name.'/'.$form_id.'"><i class="fa fa-pencil" data-id=""></i></a>';            
+            $output_arr['data'][$key][6] = '<a href="'.base_url().$html_file.'" class ="mClass" style="cursor:pointer;" target="_blank"><i class="fa fa-eye" ></i></a>';
+            if($type == 'admin') {
+              $output_arr['data'][$key][6] .= '<a href="'.base_url().'user/'.$form_name.'/'.$form_id.'" class ="mClass"><i class="fa fa-pencil" data-id=""></i></a>';
+              $output_arr['data'][$key][6] .= '<select onclick="changeForumstatus(this, '.$output_arr['data'][$key][0].')"><option value="actif">Actif</option><option value="inactif">Inactif</option></select>';
+            } else {
+              if($output_arr['data'][$key][8] != 'actif'){
+                $output_arr['data'][$key][6] .= '<a href="'.base_url().'user/'.$form_name.'/'.$form_id.'" class ="mClass"><i class="fa fa-pencil" data-id=""></i></a>';
+              }
+            }
+            
+            $output_arr['data'][$key][6] .= $status_select;
+            $output_arr['data'][$key][0] = '<input type="checkbox" name="selData" value="'.$output_arr['data'][$key][0].'">';
             
             $out_arr['data'][$key][0] = $output_arr['data'][$key][0];
             $out_arr['data'][$key][1] = $output_arr['data'][$key][1];
             $out_arr['data'][$key][2] = $output_arr['data'][$key][2];
             $out_arr['data'][$key][3] = $output_arr['data'][$key][3];
             $out_arr['data'][$key][4] = $user_name;
-            $out_arr['data'][$key][5] = $output_arr['data'][$key][5];
+            $out_arr['data'][$key][5] = $output_arr['data'][$key][8];
+            $out_arr['data'][$key][6] = $output_arr['data'][$key][6];
         }
         echo json_encode($out_arr);
+    }
+
+    public function change_forumstatus($id, $value){
+      is_login();
+      $data['status'] = $value;
+      $this->User_model->change_forumstatus($id, $data);
+      redirect(base_url().'user/forum', 'refresh');
     }
 
     /**

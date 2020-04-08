@@ -284,7 +284,7 @@ class SSP {
         }
         return $a;
     }
-    static function complex ( $request, $conn, $table, $primaryKey, $columns, $whereResult='', $whereAll='' )
+    static function complex ( $request, $conn, $table, $primaryKey, $columns, $whereResult='', $whereAll='', $condition='' )
     {
         $bindings = array();
         $db = SSP::sql_connect( $conn );
@@ -297,8 +297,13 @@ class SSP {
         $order = SSP::order( $request, $columns );
         $where = SSP::filter( $request, $columns, $bindings );
 
-        $whereResult = SSP::_flatten( $whereResult );
-        $whereAll = SSP::_flatten( $whereAll );
+        if($condition = 'OR') {
+            $whereResult = SSP::_flatten( $whereResult, ' OR ' );
+            $whereAll = SSP::_flatten( $whereAll, ' OR ' );    
+        } else {
+            $whereResult = SSP::_flatten( $whereResult );
+            $whereAll = SSP::_flatten( $whereAll );
+        }
 
         if ( $whereResult ) {
             $where = $where ?

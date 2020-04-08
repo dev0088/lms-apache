@@ -143,4 +143,10 @@ class User_model extends CI_Model {
 		$this->db->update($table,$data);
 		return true;
   	}
+
+  	public function change_forumstatus($id, $data) {
+  		$this->db->where('id',$id);
+		$this->db->update('forum',$data);
+		return true;	
+  	}
 }

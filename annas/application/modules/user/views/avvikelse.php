@@ -48,7 +48,7 @@
                 <p class="input_option">PERSONNUMMER</p><input type="text" name="code_number" size="20" value="<?php echo (!empty($user_data['code_number'])?$user_data['code_number']:'');?>">
               </div>
               <div class="col-xs-12 box-content-input">
-                <p class="input_option">Vem upptäckte incidenten?</p><input type="text" id="finder" name="finder" size="20" value="<?php echo (!empty($user_data['finder'])?$user_data['finder']:$usr_data['name']);?>">
+                <p class="input_option">Vem upptäckte incidenten?</p><input type="text" id="finder" name="finder" size="20" value="<?php echo (!empty($user_data['finder'])?$user_data['finder']:$usr_data['name']);?>" disabled>
               </div>
               <div class="col-xs-12 box-content-input">
                 <p class="input_option">Händelseförloppet:</p><textarea name="course" rows="10" style="width:100%"><?php echo (!empty($user_data['course'])?$user_data['course']:'');?></textarea>

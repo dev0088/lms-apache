@@ -31,7 +31,8 @@
                   <th>Namn</th>
 									<th>Personnummer</th>
                   <th>Forme</th>
-                  <th>créer par</th>
+                  <th>Créer par</th>
+                  <th>Statut</th>
                   <th>Action</th>
                 </tr>
               </thead>
@@ -91,9 +92,17 @@
     setTimeout(function() {
       var add_width = $('.dataTables_filter').width()+$('.box-body .dt-buttons').width()+10;
       $('.table-date-range').css('right',add_width+'px');
-
-        $('.dataTables_info').before('<button data-base-url="<?php echo base_url().'user/delete_forum/'; ?>" rel="delSelTable" class="btn btn-default btn-sm delSelected pull-left btn-blk-del"> <i class="fa fa-trash"></i> </button><br><br>');  
+      $('.dataTables_info').before('<button data-base-url="<?php echo base_url().'user/delete_forum/'; ?>" rel="delSelTable" class="btn btn-default btn-sm delSelected pull-left btn-blk-del"> <i class="fa fa-trash"></i> </button><br><br>');  
     }, 300);
     $("button.closeTest, button.close").on("click", function (){});
+
   });
+
+  function changeForumstatus(object, id) {
+    var url =  $('body').attr('data-base-url');
+    // var val = object.options[object.selectedIndex].value;
+    var val = object.value;
+    window.location= url+"user/change_forumstatus/"+id+"/"+val;
+  }
+
 </script>            
