@@ -97,8 +97,8 @@
                 <label for="event13"> Fysiskt, psykiskt, sexuellt eller ekonomiskt övergrepp</label><br>
                 <input type="checkbox" class="event_checkbox" id="event14" name="event_checkbox" value="Misstanke om självmord">
                 <label for="event14"> Misstanke om självmord</label><br>
-                <input type="checkbox" class="event_checkbox" id="event15" name="event_checkbox" value="Annat">
-                <label for="event15"> Annat</label><br>
+                <!-- <input type="checkbox" class="event_checkbox" id="event15" name="event_checkbox" value="Annat">
+                <label for="event15"> Annat</label><br> -->
                 <textarea name="type_event" id="event_textarea" rows="2" style="width:100%"><?php echo (!empty($user_data['type_event'])?$user_data['type_event']:'');?></textarea>
 
               </div>              
@@ -133,6 +133,7 @@
     $( "#datepicker" ).datepicker({ dateFormat: 'dd-mm-yy' });
     $("input.event_checkbox").click(function () {
       var val = [];
+      $('#event_textarea').val('');
       $("input.event_checkbox:checked").each(function(i){
         val[i] = ' ' + $(this).val();
         $('#event_textarea').val(val);
