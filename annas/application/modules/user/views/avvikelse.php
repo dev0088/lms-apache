@@ -68,8 +68,40 @@
                 <p class="input_option">• Händelsebeskrivning (beskriv detaljerat vad sominträffat)</p><textarea name="course" rows="8" style="width:100%"><?php echo (!empty($user_data['course'])?$user_data['course']:'');?></textarea>
               </div>
               <div class="col-xs-12 box-content-input">
-                <p class="input_option">• Typ av händelse</p><textarea name="type_event" rows="2" style="width:100%"><?php echo (!empty($user_data['type_event'])?$user_data['type_event']:'');?></textarea>
-              </div>
+                <p class="input_option">• Typ av händelse</p>
+                <input type="checkbox" class="event_checkbox" id="event1" name="event_checkbox" value="Brist i bemötande">
+                <label for="event1"> Brist i bemötande</label><br>
+                <input type="checkbox" class="event_checkbox" id="event2" name="event_checkbox" value="Bristande tillgänglighet">
+                <label for="event2"> Bristande tillgänglighet</label><br>
+                <input type="checkbox" class="event_checkbox" id="event3" name="event_checkbox" value="Brist i/utebliven handläggning eller dokumentation (HSL, SOL, LSS)">
+                <label for="event3"> Brist i/utebliven handläggning eller dokumentation (HSL, SOL, LSS)</label><br>
+                <input type="checkbox" class="event_checkbox" id="event4" name="event_checkbox" value="Brist i/utebliven insats">
+                <label for="event4"> Brist i/utebliven insats</label><br>
+                <input type="checkbox" class="event_checkbox" id="event5" name="event_checkbox" value="Brist i/utebliven vårdåtgärd">
+                <label for="event5"> Brist i/utebliven vårdåtgärd</label><br>
+                <input type="checkbox" class="event_checkbox" id="event6" name="event_checkbox" value="Brist gällande samtycke från brukare">
+                <label for="event6"> Brist gällande samtycke från brukare</label><br>
+                <input type="checkbox" class="event_checkbox" id="event7" name="event_checkbox" value="Brist i information, kommunikation, samverken">
+                <label for="event7"> Brist i information, kommunikation, samverken</label><br>
+                <input type="checkbox" class="event_checkbox" id="event8" name="event_checkbox" value="Läkemedelshändelse">
+                <label for="event8"> Läkemedelshändelse</label><br>
+                <input type="checkbox" class="event_checkbox" id="event9" name="event_checkbox" value="Fall">
+                <label for="event9"> Fall</label><br>
+                <input type="checkbox" class="event_checkbox" id="event10" name="event_checkbox" value="Vård- och omsorgsskada">
+                <label for="event10"> Vård- och omsorgsskada</label><br>
+                <input type="checkbox" class="event_checkbox" id="event11" name="event_checkbox" value="Händelse med produkter och/eller teknik">
+                <label for="event11"> Händelse med produkter och/eller teknik</label><br>
+                <input type="checkbox" class="event_checkbox" id="event12" name="event_checkbox" value="Bruten sekretess">
+                <label for="event12"> Bruten sekretess</label><br>
+                <input type="checkbox" class="event_checkbox" id="event13" name="event_checkbox" value="Fysiskt, psykiskt, sexuellt eller ekonomiskt övergrepp">
+                <label for="event13"> Fysiskt, psykiskt, sexuellt eller ekonomiskt övergrepp</label><br>
+                <input type="checkbox" class="event_checkbox" id="event14" name="event_checkbox" value="Misstanke om självmord">
+                <label for="event14"> Misstanke om självmord</label><br>
+                <input type="checkbox" class="event_checkbox" id="event15" name="event_checkbox" value="Annat">
+                <label for="event15"> Annat</label><br>
+                <textarea name="type_event" id="event_textarea" rows="2" style="width:100%"><?php echo (!empty($user_data['type_event'])?$user_data['type_event']:'');?></textarea>
+
+              </div>              
               <div class="col-xs-12 box-content-input">
                 <p class="input_option">• Ev. direkt utförd handling för att undvika mer skada</p><textarea name="suggestion" rows="5" style="width:100%"><?php echo (!empty($user_data['suggestion'])?$user_data['suggestion']:'');?></textarea>
               </div>
@@ -99,5 +131,12 @@
 <script type="text/javascript">
   $(document).ready(function() {  
     $( "#datepicker" ).datepicker({ dateFormat: 'dd-mm-yy' });
+    $("input.event_checkbox").click(function () {
+      var val = [];
+      $("input.event_checkbox:checked").each(function(i){
+        val[i] = ' ' + $(this).val();
+        $('#event_textarea').val(val);
+      });
+    });
   });
 </script>
