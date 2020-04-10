@@ -297,13 +297,13 @@ class SSP {
         $order = SSP::order( $request, $columns );
         $where = SSP::filter( $request, $columns, $bindings );
 
-        if($condition = 'OR') {
-            $whereResult = SSP::_flatten( $whereResult, ' OR ' );
-            $whereAll = SSP::_flatten( $whereAll, ' OR ' );    
-        } else {
+        // if($condition = 'OR') {
+        //     $whereResult = SSP::_flatten( $whereResult, ' OR ' );
+        //     $whereAll = SSP::_flatten( $whereAll, ' OR ' );
+        // } else {
             $whereResult = SSP::_flatten( $whereResult );
             $whereAll = SSP::_flatten( $whereAll );
-        }
+        // }
 
         if ( $whereResult ) {
             $where = $where ?
@@ -326,7 +326,6 @@ class SSP {
              $order
              $limit"
         );
-
         // Data set length after filtering
         $resFilterLength = SSP::sql_exec( $db, $bindings,
             "SELECT COUNT(`{$primaryKey}`)

@@ -12,7 +12,7 @@
       <div class="col-xs-12">
         <div class="box box-success">
           <div class="box-header with-border">
-            <h3 class="box-title">Forum</h3>
+            <h3 class="box-title" style="color: #00c0ef!important;font-weight:600;">Forum</h3>
             <div class="box-tools">
             <!-- 
               <?php if(CheckPermission("users", "own_create")){ ?>
@@ -23,17 +23,20 @@
             </div>
           </div>
           <!-- /.box-header -->
-          <div class="box-body" style="overflow: scroll;">           
+          <div class="box-body" style="overflow: scroll;">
             <table id="example1" class="cell-border example1 table table-striped table1 delSelTable">
               <thead>
                 <tr>
                   <th><input type="checkbox" class="selAll"></th>
-                  <th>Namn</th>
-									<th>Personnummer</th>
+                  <th>Datum</th>
+                  <th>KUNDNAMN</th>
+                  <th>ZON</th>
+                  <th>Personal</th>
                   <th>Forme</th>
-                  <th>Créer par</th>
+                  <th>Type de formulaire</th>
                   <th>Statut</th>
-                  <th>Action</th>
+                  <th>Vue</th>
+                  <th>Éditer</th>
                 </tr>
               </thead>
               <tbody>
@@ -69,12 +72,13 @@
     var table = $('#example1').DataTable({ 
           dom: 'lfBrtip',
           buttons: [
-              'copy', 'excel', 'pdf', 'print'
+              'copy', 'excel', 'pdf'
           ],
           "processing": true,
           "serverSide": true,
           "ajax": url+"user/forumTable",
           "sPaginationType": "full_numbers",
+          "searching": true,
           "language": {
             "search": "_INPUT_", 
             "searchPlaceholder": "Search",
@@ -84,7 +88,7 @@
                 "first": '<i class="fa fa-angle-double-left"></i>',
                 "last": '<i class="fa fa-angle-double-right"></i>'
             }
-          }, 
+          },
           "iDisplayLength": 10,
           "aLengthMenu": [[10, 25, 50, 100,500,-1], [10, 25, 50,100,500,"All"]]
       });
@@ -92,10 +96,13 @@
     setTimeout(function() {
       var add_width = $('.dataTables_filter').width()+$('.box-body .dt-buttons').width()+10;
       $('.table-date-range').css('right',add_width+'px');
-      $('.dataTables_info').before('<button data-base-url="<?php echo base_url().'user/delete_forum/'; ?>" rel="delSelTable" class="btn btn-default btn-sm delSelected pull-left btn-blk-del"> <i class="fa fa-trash"></i> </button><br><br>');  
+      <?php
+      if($this->session->userdata ('user_details')[0]->user_type == admin){
+      ?>
+        $('.dataTables_info').before('<button data-base-url="<?php echo base_url().'user/delete_forum/'; ?>" rel="delSelTable" class="btn btn-default btn-sm delSelected pull-left btn-blk-del"> <i class="fa fa-trash"></i> </button><br><br>');
+      <?php } ?>
     }, 300);
     $("button.closeTest, button.close").on("click", function (){});
-
   });
 
   function changeForumstatus(object, id) {

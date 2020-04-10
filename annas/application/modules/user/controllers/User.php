@@ -214,11 +214,11 @@ class User extends CI_Controller {
         $table = 'forum';
         $primaryKey = 'id';
         $columns = array(
-           array( 'db' => 'id', 'dt' => 0 ),array( 'db' => 'customer_name', 'dt' => 1 ),
-                    array( 'db' => 'code_number', 'dt' => 2 ), array( 'db' => 'form', 'dt' => 3 ),
-                    array( 'db' => 'html_file', 'dt' => 4 ), array( 'db' => 'form_id', 'dt' => 5 ),
-                    array( 'db' => 'form', 'dt' => 6 ), array( 'db' => 'users_id', 'dt' => 7 ),
-                    array( 'db' => 'status', 'dt' => 8 )
+           array( 'db' => 'id', 'dt' => 0 ),array( 'db' => 'date', 'dt' => 1 ),
+           array( 'db' => 'customer_name', 'dt' => 2 ),array( 'db' => 'zone', 'dt' => 3 ),
+           array( 'db' => 'users_id', 'dt' => 4 ),array( 'db' => 'form', 'dt' => 5 ),
+           array( 'db' => 'type_event', 'dt' => 6 ),array( 'db' => 'status', 'dt' => 7 ),
+           array( 'db' => 'html_file', 'dt' => 8 ),array( 'db' => 'form_id', 'dt' => 9 )
         );
 
         $sql_details = array(
@@ -229,38 +229,34 @@ class User extends CI_Controller {
         );
         $where = '';
         if($type != 'admin') {
-          $where = array("users_id = ".$id, "status = 'actif'");
+          $where = array("(users_id = '".$id."') OR (users_id <> '".$id."' AND status = 'actif')");
         }
-        $output_arr = SSP::complex( $_GET, $sql_details, $table, $primaryKey, $columns, $where, '', 'OR');
+        // $output_arr = SSP::complex( $_GET, $sql_details, $table, $primaryKey, $columns, $where, '', 'OR');
+        $output_arr = SSP::complex( $_GET, $sql_details, $table, $primaryKey, $columns, $where);
         foreach ($output_arr['data'] as $key => $value) {
-            $users_id = $output_arr['data'][$key][7];
+            $users_id = $output_arr['data'][$key][4];
             $result = $this->User_model->get_users($users_id);
             $user_name = $result[0]->name;
-            $html_file = $output_arr['data'][$key][4];
-            $form_name = $output_arr['data'][$key][6];
-            $form_id = $output_arr['data'][$key][5];            
-            $output_arr['data'][$key][6] = '<a href="'.base_url().$html_file.'" class ="mClass" style="cursor:pointer;" target="_blank"><i class="fa fa-eye" ></i></a>';
+            $html_file = $output_arr['data'][$key][8];
+            $form_name = $output_arr['data'][$key][5];
+            $form_id = $output_arr['data'][$key][9];            
+            $preview = '<a href="'.base_url().$html_file.'" class ="mClass" style="cursor:pointer;" target="_blank"><i class="fa fa-eye" ></i></a>';
             if($type == 'admin') {
-              $output_arr['data'][$key][6] .= '<a href="'.base_url().'user/'.$form_name.'/'.$form_id.'" class ="mClass"><i class="fa fa-pencil" data-id=""></i></a>';
-              $output_arr['data'][$key][6] .= '<select onchange="changeForumstatus(this, '.$output_arr['data'][$key][0].');"><option hidden disabled selected value>- Statut -</option><option value="actif">Actif</option><option value="inactif">Inactif</option></select>';
+              $edit = '<a href="'.base_url().'user/'.$form_name.'/'.$form_id.'" class ="mClass"><i class="fa fa-pencil" data-id=""></i></a>';
+              $edit .= '<select onchange="changeForumstatus(this, '.$output_arr['data'][$key][0].');"><option hidden disabled selected value>- Statut -</option><option value="actif">Actif</option><option value="inactif">Inactif</option></select>';
             } else {
-              if($output_arr['data'][$key][8] != 'actif'){
-                $output_arr['data'][$key][6] .= '<a href="'.base_url().'user/'.$form_name.'/'.$form_id.'" class ="mClass"><i class="fa fa-pencil" data-id=""></i></a>';
+              if($output_arr['data'][$key][7] != 'actif'){
+                $edit = '<a href="'.base_url().'user/'.$form_name.'/'.$form_id.'" class ="mClass"><i class="fa fa-pencil" data-id=""></i></a>';
+              } else {
+                $edit = '<a href="" class ="mClass" style="opacity: 0.4;pointer-events: none;"><i class="fa fa-pencil" data-id=""></i></a>';
               }
             }
-            
-            $output_arr['data'][$key][6] .= $status_select;
             $output_arr['data'][$key][0] = '<input type="checkbox" name="selData" value="'.$output_arr['data'][$key][0].'">';
-            
-            $out_arr['data'][$key][0] = $output_arr['data'][$key][0];
-            $out_arr['data'][$key][1] = $output_arr['data'][$key][1];
-            $out_arr['data'][$key][2] = $output_arr['data'][$key][2];
-            $out_arr['data'][$key][3] = $output_arr['data'][$key][3];
-            $out_arr['data'][$key][4] = $user_name;
-            $out_arr['data'][$key][5] = $output_arr['data'][$key][8];
-            $out_arr['data'][$key][6] = $output_arr['data'][$key][6];
+            $output_arr['data'][$key][4] = $user_name;
+            $output_arr['data'][$key][8] = $preview;
+            $output_arr['data'][$key][9] = $edit;
         }
-        echo json_encode($out_arr);
+        echo json_encode($output_arr);
     }
 
     public function change_forumstatus($id, $value){
@@ -321,15 +317,21 @@ class User extends CI_Controller {
     public function submit_customer_avvikelse($id='') {
         is_login();
         if($this->input->post()){
-            $customer_data['users_id'] = $this->session->userdata ('user_details')[0]->users_id;
+            $customer_data['users_id'] = $this->session->userdata('user_details')[0]->users_id;
             $customer_data['date'] = $this->input->post('date');
             $customer_data['customer_name'] = $this->input->post('customer_name');
-            $customer_data['code_number'] = $this->input->post('code_number');
-            $customer_data['finder'] = $this->input->post('finder');
+            $customer_data['usr_name'] = $this->input->post('usr_name');
+            $customer_data['several_users'] = $this->input->post('several_users');
             $customer_data['course'] = $this->input->post('course');
             $customer_data['suggestion'] = $this->input->post('suggestion');
+            $customer_data['time'] = $this->input->post('time');
+            $customer_data['location'] = $this->input->post('location');
+            $customer_data['zone'] = $this->input->post('zone');
+            $customer_data['type_event'] = $this->input->post('type_event');
+            $customer_data['admin_remark'] = $this->input->post('admin_remark');
+
             if( !empty($id) ){
-              $this->User_model->updateRow('avvikelse', 'id', $id, $customer_data);  
+              $this->User_model->updateRow('avvikelse', 'id', $id, $customer_data);
             } else {
               $this->User_model->insertRow('avvikelse',$customer_data);
             }
@@ -337,12 +339,15 @@ class User extends CI_Controller {
             $result = $this->User_model->get_data_by('avvikelse','', 'id', 'desc');
             $customer_id = $result[0]->id;
 
+            $forum_data['date'] = $customer_data['date'];
             $forum_data['customer_name'] = $this->input->post('customer_name');
-            $forum_data['code_number'] = $this->input->post('code_number');
+            $forum_data['zone'] = $customer_data['zone'];
+            $forum_data['type_event'] = $customer_data['type_event'];
             $forum_data['form'] = 'avvikelse';
-            $forum_data['html_file'] = "data/avvikelse_".$customer_data['code_number']."_".$customer_data['date']."_".$customer_data['finder'].".html";
+            $forum_data['html_file'] = "data/avvikelse_".$customer_data['customer_name']."_".$customer_data['date']."_".$customer_data['users_id'].".html";
             $forum_data['form_id'] = $customer_id;
             $forum_data['users_id'] = $customer_data['users_id'];
+            $forum_data['usr_name'] = $customer_data['usr_name'];
             if( !empty($id) ) {
               $this->User_model->updateRow_M('forum', 'form_id', $id, 'form', 'avvikelse', $forum_data);
             } else {
@@ -351,47 +356,58 @@ class User extends CI_Controller {
             ?>
 
             <?php
-            // Start the buffering //
             ob_start();
             ?>
             <html>
             <meta charset="UTF-8">
             <body>
-              <!-- /.box-header -->
-
               <div class="box-body">
-                <div class="col-xs-12" style="display: flex; justify-content: space-between; margin-bottom: 10px;">
-                  <img src="<?php echo base_url().'assets/images/logo.png'; ?>" style="display: inline-block;">
-                  <h4 style="display: inline-block; margin-right: 15%; padding-top: 50px; font-weight: 600;">DATUM: <span style="font-weight: normal;"><?php echo $customer_data['date'];?></span></h4>
-                </div>
                 <div class="col-xs-12" style="text-align:center; margin-bottom: 10px;">
-                  <h1>AVVIKELSE</h1>
+                  <h1 style="color: #00c0ef!important;">Avvikelserapportering SoL</h1>
+                  <h4 style="color: #00c0ef!important;">Annas vård och hemtjänstteam AB</h4>
                 </div>
-                <div class="col-xs-12" style="display: flex; justify-content: space-between; margin-bottom: 10px;">
-                  <h4 style="display: inline-block; font-weight: 600;">NAMN: <span style="font-weight: normal;"><?php echo $customer_data['customer_name'];?></span></h4>
-                  <h4 style="display: inline-block; margin-right: 25%; font-weight: 600;">PERSONNUMMER: <span style="font-weight: normal;"><?php echo $customer_data['code_number'];?></span></h4>
+                <!-- <div class="col-xs-12" style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                  <h4 style="display: inline-block; font-weight: 600;">Kundnamn: <span style="font-weight: normal;"><?php echo $customer_data['customer_name'];?></span></h4>
+                  <h4 style="display: inline-block; margin-right: 25%; font-weight: 600;">Zon: <span style="font-weight: normal;"><?php echo $customer_data['zone'];?></span></h4>
+                </div> -->
+                <div class="col-xs-12" style="margin-bottom: 10px;">
+                  <h4 style="font-weight: 600;">Kundnamn: <span style="font-weight: normal;"><?php echo $customer_data['customer_name'];?></span></h4>
+                  <h4 style="font-weight: 600;">Zon: <span style="font-weight: normal;"><?php echo $customer_data['zone'];?></span></h4>
                 </div>
                 <div class="col-xs-12" style="margin-bottom: 10px;">
-                  <h4 style="font-weight: 600;">Vem upptäckte incidenten?</h4>
-                  <h4 style="font-weight: normal;"><?php echo $customer_data['finder'];?></h4>
+                  <h4 style="font-weight: 600;">Personal: <span style="font-weight: normal;"><?php echo $customer_data['usr_name'];?></span></h4>
                 </div>
-                <div class="col-xs-12" style="min-height: 200px; margin-bottom: 10px;">
-                  <h4 style="font-weight: 600;">Händelseförloppet:</h4>
-                  <h4 style="font-weight: normal;"><?php echo $customer_data['course'];?></h4>
+                <div class="col-xs-12" style="margin-bottom: 10px;">
+                  <h4 style="font-weight: 600;">Alternativt flera brukare berörda av händelsen: <span style="font-weight: normal;"><?php echo $customer_data['several_users'];?></span></h4>
+                </div>
+                <div class="col-xs-12" style="margin-bottom: 10px;">
+                  <h4 style="font-weight: 600;">Händelsedatum & tid: <span style="font-weight: normal;"><?php echo $customer_data['date'];?> <?php echo $customer_data['time'];?></span></h4>
+                </div>
+                <div class="col-xs-12" style="margin-bottom: 10px;">
+                  <h4 style="font-weight: 600;">Händelseplats*: <span style="font-weight: normal;"><?php echo $customer_data['location'];?></span></h4>
                 </div>
                 <div class="col-xs-12" style="min-height: 150px; margin-bottom: 10px;">
-                  <h4 style="font-weight: 600;">Eventuella åtgärdsförslag:</h4>
+                  <h4 style="font-weight: 600;">• Händelsebeskrivning (beskriv detaljerat vad sominträffat)</h4>
+                  <h4 style="font-weight: normal;"><?php echo $customer_data['course'];?></h4>
+                </div>
+                <div class="col-xs-12" style="margin-bottom: 10px;">
+                  <h4 style="font-weight: 600;">• Typ av händelse</h4>
+                  <h4 style="font-weight: normal;"><?php echo $customer_data['type_event'];?></h4>
+                </div>
+                <div class="col-xs-12" style="min-height: 80px; margin-bottom: 10px;">
+                  <h4 style="font-weight: 600;">• Ev. direkt utförd handling för att undvika mer skada</h4>
                   <h4 style="font-weight: normal;"><?php echo $customer_data['suggestion'];?></h4>
                 </div>
-              <!-- /.box-body -->
-            </div>
+                <div class="col-xs-12" style="min-height: 50px; margin-bottom: 10px;">
+                  <h4 style="font-weight: 600;">• Verksamhetschefs åtgärder</h4>
+                  <h4 style="font-weight: normal;"><?php echo $customer_data['admin_remark'];?></h4>
+                </div>
+              </div>
             </body>
             </html>
 
-            <!-- /.box -->
             <?php
-            // Get the content that is in the buffer and put it in your file //
-            file_put_contents("data/avvikelse_".$customer_data['code_number']."_".$customer_data['date']."_".$customer_data['finder'].".html", ob_get_contents());
+            file_put_contents("data/avvikelse_".$customer_data['customer_name']."_".$customer_data['date']."_".$customer_data['users_id'].".html", ob_get_contents());
             ?>
 
             <?php
@@ -403,22 +419,114 @@ class User extends CI_Controller {
         }
     }
 
+    public function submit_customer_socialjournal($id='') {
+        is_login();
+        if($this->input->post()){
+            $customer_data['users_id'] = $this->session->userdata('user_details')[0]->users_id;
+            $customer_data['date'] = $this->input->post('date');
+            $customer_data['customer_name'] = $this->input->post('customer_name');
+            $customer_data['usr_name'] = $this->input->post('usr_name');
+            $customer_data['several_users'] = $this->input->post('several_users');
+            $customer_data['course'] = $this->input->post('course');
+            $customer_data['time'] = $this->input->post('time');
+            $customer_data['location'] = $this->input->post('location');
+            $customer_data['zone'] = $this->input->post('zone');
+            $customer_data['type_event'] = $this->input->post('type_event');
+            if( !empty($id) ){
+              $this->User_model->updateRow('socialjournal', 'id', $id, $customer_data);
+            } else {
+              $this->User_model->insertRow('socialjournal',$customer_data);
+            }
+            $result = $this->User_model->get_data_by('socialjournal','', 'id', 'desc');
+            $customer_id = $result[0]->id;
+            $forum_data['date'] = $customer_data['date'];
+            $forum_data['customer_name'] = $this->input->post('customer_name');
+            $forum_data['zone'] = $customer_data['zone'];
+            $forum_data['type_event'] = $customer_data['type_event'];
+            $forum_data['form'] = 'socialjournal';
+            $forum_data['html_file'] = "data/socialjournal_".$customer_data['customer_name']."_".$customer_data['date']."_".$customer_data['users_id'].".html";
+            $forum_data['form_id'] = $customer_id;
+            $forum_data['users_id'] = $customer_data['users_id'];
+            $forum_data['usr_name'] = $customer_data['usr_name'];
+            if( !empty($id) ) {
+              $this->User_model->updateRow_M('forum', 'form_id', $id, 'form', 'socialjournal', $forum_data);
+            } else {
+              $this->User_model->insertRow('forum',$forum_data);
+            }
+            ?>
+
+            <?php
+            ob_start();
+            ?>
+            <html>
+            <meta charset="UTF-8">
+            <body>
+              <div class="box-body">
+                <div class="col-xs-12" style="text-align:center; margin-bottom: 10px;">
+                  <h1 style="color: #00c0ef!important;">SOCIAL JOURNAL FÖR GENOMFÖRANDE</h1>
+                  <h1 style="color: #00c0ef!important;">(ENLIGT SOL OCH LSS)</h1>
+                  <h4 style="color: #00c0ef!important;">Annas vård och hemtjänstteam AB</h4>
+                </div>
+                <div class="col-xs-12" style="margin-bottom: 10px;">
+                  <h4 style="font-weight: 600;">Kundnamn: <span style="font-weight: normal;"><?php echo $customer_data['customer_name'];?></span></h4>
+                  <h4 style="font-weight: 600;">Zon: <span style="font-weight: normal;"><?php echo $customer_data['zone'];?></span></h4>
+                </div>
+                <div class="col-xs-12" style="margin-bottom: 10px;">
+                  <h4 style="font-weight: 600;">Personal: <span style="font-weight: normal;"><?php echo $customer_data['usr_name'];?></span></h4>
+                </div>
+                <div class="col-xs-12" style="margin-bottom: 10px;">
+                  <h4 style="font-weight: 600;">Alternativt flera brukare berörda av händelsen: <span style="font-weight: normal;"><?php echo $customer_data['several_users'];?></span></h4>
+                </div>
+                <div class="col-xs-12" style="margin-bottom: 10px;">
+                  <h4 style="font-weight: 600;">Händelsedatum & tid: <span style="font-weight: normal;"><?php echo $customer_data['date'];?> <?php echo $customer_data['time'];?></span></h4>
+                </div>
+                <div class="col-xs-12" style="margin-bottom: 10px;">
+                  <h4 style="font-weight: 600;">Händelseplats*: <span style="font-weight: normal;"><?php echo $customer_data['location'];?></span></h4>
+                </div>
+                <div class="col-xs-12" style="margin-bottom: 10px;">
+                  <h4 style="font-weight: 600;">• Typ av händelse</h4>
+                  <h4 style="font-weight: normal;"><?php echo $customer_data['type_event'];?></h4>
+                </div>
+                <div class="col-xs-12" style="min-height: 150px; margin-bottom: 10px;">
+                  <h4 style="font-weight: 600;">• Händelsebeskrivning (beskriv detaljerat vad sominträffat)</h4>
+                  <h4 style="font-weight: normal;"><?php echo $customer_data['course'];?></h4>
+                </div>
+              </div>
+            </body>
+            </html>
+            <?php
+            file_put_contents("data/socialjournal_".$customer_data['customer_name']."_".$customer_data['date']."_".$customer_data['users_id'].".html", ob_get_contents());
+            ?>
+            <?php
+            header("Location: ". base_url()."user/forum");
+        } else {
+            $this->load->view('include/header'); 
+            $this->load->view('socialjournal');
+            $this->load->view('include/footer');
+        }
+    }
+
     /**
      * This function is Showing users avvikelse
      * @return Void
      */
-    public function avvikelse($id='') {   
+    public function avvikelse($id='') {
         is_login();
-        $this->load->view('include/header'); 
+        $this->load->view('include/header');        
         if(!empty($id)){
           $result_data = $this->User_model->get_data_by('avvikelse',$id, 'id');
           $customer_data['id'] = $id;
           $customer_data['date'] = $result_data[0]->date;
+          $customer_data['time'] = $result_data[0]->time;
+          $customer_data['location'] = $result_data[0]->location;
           $customer_data['customer_name'] = $result_data[0]->customer_name;
-          $customer_data['code_number'] = $result_data[0]->code_number;
-          $customer_data['finder'] = $result_data[0]->finder;
+          $customer_data['zone'] = $result_data[0]->zone;
+          $customer_data['usr_name'] = $result_data[0]->usr_name;
+          $customer_data['several_users'] = $result_data[0]->several_users;
           $customer_data['course'] = $result_data[0]->course;
+          $customer_data['type_event'] = $result_data[0]->type_event;
           $customer_data['suggestion'] = $result_data[0]->suggestion;
+          $customer_data['admin_remark'] = $result_data[0]->admin_remark;
           // $a = $result_data[0]->suggestion;
           // echo "<script type='text/javascript'>alert('$a');</script>";
           $data['user_data'] = $customer_data;
@@ -430,6 +538,32 @@ class User extends CI_Controller {
         }
         $this->load->view('include/footer');
     }
+
+    public function socialjournal($id='') {
+        is_login();
+        $this->load->view('include/header');        
+        if(!empty($id)){
+          $result_data = $this->User_model->get_data_by('socialjournal',$id, 'id');
+          $customer_data['id'] = $id;
+          $customer_data['date'] = $result_data[0]->date;
+          $customer_data['time'] = $result_data[0]->time;
+          $customer_data['location'] = $result_data[0]->location;
+          $customer_data['customer_name'] = $result_data[0]->customer_name;
+          $customer_data['zone'] = $result_data[0]->zone;
+          $customer_data['usr_name'] = $result_data[0]->usr_name;
+          $customer_data['several_users'] = $result_data[0]->several_users;
+          $customer_data['course'] = $result_data[0]->course;
+          $customer_data['type_event'] = $result_data[0]->type_event;
+          $data['user_data'] = $customer_data;
+          $this->load->view('socialjournal', $data);
+        } else {
+          $user['name'] = $this->session->userdata ('user_details')[0]->name;
+          $data1['usr_data'] = $user;
+          $this->load->view('socialjournal', $data1);
+        }
+        $this->load->view('include/footer');
+    }
+
 
     /**
      * This function is Showing users profile

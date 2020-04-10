@@ -11,7 +11,7 @@
     <!-- Profile Image -->
     <div class="box box-success pad-profile">
      	<div class="box-header with-border">
-        <h3 class="box-title">My Account <small></small></h3>
+        <h3 class="box-title" style="color: #00c0ef!important;font-weight:600;">My Account <small></small></h3>
       </div>
       <form method="post" enctype="multipart/form-data" action="<?php echo base_url().'user/add_edit' ?>" class="form-label-left">
         <div class="box-body box-profile">

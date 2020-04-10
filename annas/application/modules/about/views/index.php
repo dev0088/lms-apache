@@ -6,7 +6,7 @@
       <!-- Default box -->
       <div class="box box-success">
         <div class="box-header with-border">
-          <h3 class="box-title">About Us </h3>
+          <h3 class="box-title" style="color: #00c0ef!important;font-weight:600;">About Us </h3>
         </div>
         <div class="box-body">
           <div class="row">

@@ -21,12 +21,12 @@
       <div class="col-xs-12">
         <div class="box box-success">
         <?php if(!empty($user_data['id'])) { ?>
-          <form action="<?php echo base_url().'user/submit_customer_avvikelse/'.$user_data['id']; ?>" method="post">
+          <form action="<?php echo base_url().'user/submit_customer_socialjournal/'.$user_data['id']; ?>" method="post">
         <?php } else { ?>
-        <form action="<?php echo base_url().'user/submit_customer_avvikelse/'; ?>" method="post">
+        <form action="<?php echo base_url().'user/submit_customer_socialjournal/'; ?>" method="post">
         <?php } ?>
             <div class="box-header with-border">
-              <h3 class="box-title" style="color: #00c0ef!important;font-weight:600;">Avvikelserapportering SoL</h3>
+              <h3 class="box-title" style="color: #00c0ef!important;font-weight:600;">SOCIAL JOURNAL FÖR GENOMFÖRANDE</h3>
               <div class="box-tools">
                 <button type="submit" class="btn-sm  btn btn-success modalButtonUser"><i class="glyphicon glyphicon-plus"></i> Submit</button>
 
@@ -65,25 +65,11 @@
                 <p style="color:gray;">* Ange var – ordinärt boende, särskilt boende, utomhus eller annan plats</p>
               </div>
               <div class="col-xs-12 box-content-input">
-                <p class="input_option">• Händelsebeskrivning (beskriv detaljerat vad sominträffat)</p><textarea name="course" rows="8" style="width:100%"><?php echo (!empty($user_data['course'])?$user_data['course']:'');?></textarea>
-              </div>
-              <div class="col-xs-12 box-content-input">
                 <p class="input_option">• Typ av händelse</p><textarea name="type_event" rows="2" style="width:100%"><?php echo (!empty($user_data['type_event'])?$user_data['type_event']:'');?></textarea>
               </div>
               <div class="col-xs-12 box-content-input">
-                <p class="input_option">• Ev. direkt utförd handling för att undvika mer skada</p><textarea name="suggestion" rows="5" style="width:100%"><?php echo (!empty($user_data['suggestion'])?$user_data['suggestion']:'');?></textarea>
+                <p class="input_option">• Händelsebeskrivning (beskriv detaljerat vad sominträffat)</p><textarea name="course" rows="8" style="width:100%"><?php echo (!empty($user_data['course'])?$user_data['course']:'');?></textarea>
               </div>
-              <div class="col-xs-12 box-content-input">
-                <p class="input_option" style="background: lightblue;">Verksamhetschefs åtgärder</p><textarea name="admin_remark" rows="5" style="width:100%"><?php echo (!empty($user_data['admin_remark'])?$user_data['admin_remark']:'');?></textarea>
-              </div>
-              
-              <!-- <div class="col-xs-12 box-content-input">
-                <p class="input_option">Händelseförloppet:</p><textarea name="course" rows="10" style="width:100%"><?php echo (!empty($user_data['course'])?$user_data['course']:'');?></textarea>
-              </div> -->
-              <!-- <div class="col-xs-12 box-content-input">
-                <p class="input_option">Eventuella åtgärdsförslag:</p><textarea name="suggestion" rows="3" style="width:100%"><?php echo (!empty($user_data['suggestion'])?$user_data['suggestion']:'');?></textarea>
-              </div> -->
-
             </div>
             <!-- /.box-body -->
           </form>

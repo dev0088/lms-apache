@@ -12,7 +12,7 @@
       <div class="col-xs-12">
         <div class="box box-success">
           <div class="box-header with-border">
-            <h3 class="box-title">User</h3>
+            <h3 class="box-title" style="color: #00c0ef!important;font-weight:600;">User</h3>
             <div class="box-tools">
               <?php if(CheckPermission("users", "own_create")){ ?>
               <button type="button" class="btn-sm  btn btn-success modalButtonUser" data-toggle="modal"><i class="glyphicon glyphicon-plus"></i> Add User</button>
@@ -66,7 +66,7 @@
     var table = $('#example1').DataTable({ 
           dom: 'lfBrtip',
           buttons: [
-              'copy', 'excel', 'pdf', 'print'
+              'copy', 'excel', 'pdf'
           ],
           "processing": true,
           "serverSide": true,

@@ -111,6 +111,7 @@
                 <li class="header"><!-- MAIN NAVIGATION --></li>
                   <li><a href="<?php echo base_url('user/forum');?>"><i class="fa fa-table"></i> <span>Forum</span></a></li>
                   <li><a href="<?php echo base_url('user/avvikelse');?>"><i class="fa fa-book"></i> <span>AVVIKELSE</span></a></li>
+                  <li><a href="<?php echo base_url('user/socialjournal');?>"><i class="fa fa-book"></i> <span>Social Journal</span></a></li>
                   <li class="<?=($this->router->class==="about")?"active":"not-active"?>">
                         <a href="<?php echo base_url("about"); ?>"><i class="fa fa-info-circle"></i> <span>About Us</span></a>
                     </li>
