@@ -5,9 +5,6 @@ class Socialjournal_model extends CI_Model {
 		$this->user_id =isset($this->session->get_userdata()['user_details'][0]->id)?$this->session->get_userdata()['user_details'][0]->users_id:'1';
 	}
 
-	/**
-      * This function is used authenticate user at login
-      */
   	function auth_user() {
 		$email = $this->input->post('email');
 		$password = $this->input->post('password');

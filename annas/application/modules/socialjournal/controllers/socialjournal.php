@@ -8,10 +8,6 @@ class Socialjournal extends CI_Controller {
 		$this->user_id = isset($this->session->get_userdata()['user_details'][0]->id)?$this->session->get_userdata()['user_details'][0]->users_id:'1';
     }
 
-    /**
-      * This function is redirect to users profile page
-      * @return Void
-      */
     public function index() {
     	 is_login();
         $this->load->view('include/header');

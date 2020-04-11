@@ -7,7 +7,7 @@
   }
 </style>
 <div class="content-wrapper">
-<!-- Content Header (Page header) -->
+<!-- Content Header (Page  header) -->
 <!-- Main content -->
   <section class="content">
   <!-- 
