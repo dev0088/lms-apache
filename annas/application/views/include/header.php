@@ -110,11 +110,14 @@
               <ul class="sidebar-menu">
                 <li class="header"><!-- MAIN NAVIGATION --></li>
                   <li><a href="<?php echo base_url('user/forum');?>"><i class="fa fa-table"></i> <span>Forum</span></a></li>
-                  <li><a href="<?php echo base_url('user/avvikelse');?>"><i class="fa fa-book"></i> <span>AVVIKELSE</span></a></li>
-                  <li><a href="<?php echo base_url('user/socialjournal');?>"><i class="fa fa-book"></i> <span>Social Journal</span></a></li>
+                  <li><a href="<?php echo base_url("avvikelse");?>"><i class="fa fa-book"></i> <span>AVVIKELSE</span></a></li>
+                  <li><a href="<?php echo base_url('socialjournal');?>"><i class="fa fa-book"></i> <span>Social Journal</span></a></li>
+                  <li class="<?=($this->router->class==="gp")?"active":"not-active"?>">
+                      <a href="<?php echo base_url("gp");?>"><i class="fa fa-book"></i> <span>GP</span></a>
+                  </li>
                   <li class="<?=($this->router->class==="about")?"active":"not-active"?>">
-                        <a href="<?php echo base_url("about"); ?>"><i class="fa fa-info-circle"></i> <span>About Us</span></a>
-                    </li>
+                      <a href="<?php echo base_url("about"); ?>"><i class="fa fa-info-circle"></i> <span>About Us</span></a>
+                  </li>
 
 
               </ul>

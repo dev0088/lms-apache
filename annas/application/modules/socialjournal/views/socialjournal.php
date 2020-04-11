@@ -21,9 +21,9 @@
       <div class="col-xs-12">
         <div class="box box-success">
         <?php if(!empty($user_data['id'])) { ?>
-          <form action="<?php echo base_url().'user/submit_customer_socialjournal/'.$user_data['id']; ?>" method="post">
+          <form action="<?php echo base_url().'socialjournal/submit/'.$user_data['id']; ?>" method="post">
         <?php } else { ?>
-        <form action="<?php echo base_url().'user/submit_customer_socialjournal/'; ?>" method="post">
+        <form action="<?php echo base_url().'socialjournal/submit/'; ?>" method="post">
         <?php } ?>
             <div class="box-header with-border">
               <h3 class="box-title" style="color: #00c0ef!important;font-weight:600;">SOCIAL JOURNAL FÖR GENOMFÖRANDE</h3>
