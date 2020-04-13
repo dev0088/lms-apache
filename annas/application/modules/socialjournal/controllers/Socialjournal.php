@@ -127,3 +127,4 @@ class Socialjournal extends CI_Controller {
     }
 
 }
+?>
