@@ -4,11 +4,11 @@
   }
   .input_option {
     font-weight: 600;
-    padding: 5px;
-    display: inline;
+    /*padding: 5px;*/
+    /*display: inline;*/
   }
   div.box-content-input input{
-    display: inline;
+    /*display: inline;*/
   }
 </style>
 <div class="content-wrapper">
@@ -48,22 +48,22 @@
             <!-- /.box-header -->
             <div class="box-body">
               <div class="col-xs-12 box-content-input">
-                <p class="input_option">Datum</p><input type="text" name="" size="" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
+                <p class="input_option">Datum</p><input type="text" name="" size="30" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
               </div>
               <div class="col-xs-12 box-content-input">
-                <p class="input_option">Kundnamn</p><input type="text" name="" size="" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
+                <p class="input_option">Kundnamn</p><input type="text" name="" size="30" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
               </div>
               <div class="col-xs-12 box-content-input">
-                <p class="input_option">Personal</p><input type="text" id="usr_name" name="usr_name" size="" value="<?php echo (!empty($user_data['usr_name'])?$user_data['usr_name']:$usr_data['name']);?>">
+                <p class="input_option">Personal</p><input type="text" id="usr_name" name="usr_name" size="30" value="<?php echo (!empty($user_data['usr_name'])?$user_data['usr_name']:$usr_data['name']);?>">
               </div>
               <div class="col-xs-12 box-content-input">
-                <p class="input_option">Adress</p><input type="text" name="" size="" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
+                <p class="input_option">Adress</p><input type="text" name="" size="30" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
               </div>
               <div class="col-xs-12 box-content-input">
-                <p class="input_option">Postadress</p><input type="text" name="" size="" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
+                <p class="input_option">Postadress</p><input type="text" name="" size="30" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
               </div>
               <div class="col-xs-12 box-content-input">
-                <p class="input_option">Telefonnummer</p><input type="text" name="" size="" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
+                <p class="input_option">Telefonnummer</p><input type="text" name="" size="30" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
               </div>
 
               <div class="col-xs-12 box-content-input" style="background: lightblue;">
@@ -71,10 +71,10 @@
                 <h4>Närstående/god man</h4>
               </div>
               <div class="col-xs-12 box-content-input">
-                <p class="input_option">Namn</p><input type="text" name="" size="" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
+                <p class="input_option">Namn</p><input type="text" name="" size="30" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
               </div>
               <div class="col-xs-12 box-content-input">
-                <p class="input_option">Relation</p><input type="text" name="" size="" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
+                <p class="input_option">Relation</p><input type="text" name="" size="30" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
               </div>
               <div class="col-xs-12 box-content-input">
                 <p class="input_option">Förstahandskontakt</p>
@@ -82,21 +82,21 @@
                 <input type="radio" name="contact_radio1" value="Nej" /><span>Nej</span>
               </div>
               <div class="col-xs-12 box-content-input">
-                <p class="input_option">Adress</p><input type="text" name="" size="" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
+                <p class="input_option">Adress</p><input type="text" name="" size="30" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
               </div>
               <div class="col-xs-12 box-content-input">
-                <p class="input_option">Postadress</p><input type="text" name="" size="" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
+                <p class="input_option">Postadress</p><input type="text" name="" size="30" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
               </div>
               <div class="col-xs-12 box-content-input">
-                <p class="input_option">Telefonnummer</p><input type="text" name="" size="" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
+                <p class="input_option">Telefonnummer</p><input type="text" name="" size="30" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
               </div>
 
               <div class="col-xs-12 box-content-input" style="border-top: 1px solid lightblue;"></div>
               <div class="col-xs-12 box-content-input">
-                <p class="input_option">Namn</p><input type="text" name="" size="" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
+                <p class="input_option">Namn</p><input type="text" name="" size="30" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
               </div>
               <div class="col-xs-12 box-content-input">
-                <p class="input_option">Relation</p><input type="text" name="" size="" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
+                <p class="input_option">Relation</p><input type="text" name="" size="30" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
               </div>
               <div class="col-xs-12 box-content-input">
                 <p class="input_option">Förstahandskontakt</p>
@@ -104,21 +104,21 @@
                 <input type="radio" name="contact_radio2" value="Nej" /><span>Nej</span>
               </div>
               <div class="col-xs-12 box-content-input">
-                <p class="input_option">Adress</p><input type="text" name="" size="" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
+                <p class="input_option">Adress</p><input type="text" name="" size="30" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
               </div>
               <div class="col-xs-12 box-content-input">
-                <p class="input_option">Postadress</p><input type="text" name="" size="" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
+                <p class="input_option">Postadress</p><input type="text" name="" size="30" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
               </div>
               <div class="col-xs-12 box-content-input">
-                <p class="input_option">Telefonnummer</p><input type="text" name="" size="" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
+                <p class="input_option">Telefonnummer</p><input type="text" name="" size="30" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
               </div>
 
               <div class="col-xs-12 box-content-input" style="border-top: 1px solid lightblue;"></div>
               <div class="col-xs-12 box-content-input">
-                <p class="input_option">God man</p><input type="text" name="" size="" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
+                <p class="input_option">God man</p><input type="text" name="" size="30" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
               </div>
               <div class="col-xs-12 box-content-input">
-                <p class="input_option">Telefonnummer</p><input type="text" name="" size="" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
+                <p class="input_option">Telefonnummer</p><input type="text" name="" size="30" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
               </div>
 
               <div class="col-xs-12 box-content-input" style="background: lightblue;">
@@ -126,42 +126,42 @@
                 <h4>Viktiga kontakter</h4>
               </div>
               <div class="col-xs-12 box-content-input">
-                <p class="input_option">Vårdcentral/Läkare</p><input type="text" name="" size="" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
+                <p class="input_option">Vårdcentral/Läkare</p><input type="text" name="30" size="30" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
               </div>
               <div class="col-xs-12 box-content-input">
-                <p class="input_option">Telefonnummer</p><input type="text" name="" size="" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
-              </div>
-
-              <div class="col-xs-12 box-content-input" style="border-top: 1px solid lightblue;"></div>
-              <div class="col-xs-12 box-content-input">
-                <p class="input_option">Omvårdnadsansvarig sjuksköterska:   KSK/ DSK</p><input type="text" name="" size="" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
-              </div>
-              <div class="col-xs-12 box-content-input">
-                <p class="input_option">Telefonnummer</p><input type="text" name="" size="" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
+                <p class="input_option">Telefonnummer</p><input type="text" name="30" size="30" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
               </div>
 
               <div class="col-xs-12 box-content-input" style="border-top: 1px solid lightblue;"></div>
               <div class="col-xs-12 box-content-input">
-                <p class="input_option">Kontaktpersonal</p><input type="text" name="" size="" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
+                <p class="input_option">Omvårdnadsansvarig sjuksköterska:   KSK/ DSK</p><input type="text" name="" size="30" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
               </div>
               <div class="col-xs-12 box-content-input">
-                <p class="input_option">Telefonnummer</p><input type="text" name="" size="" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
-              </div>
-
-              <div class="col-xs-12 box-content-input" style="border-top: 1px solid lightblue;"></div>
-              <div class="col-xs-12 box-content-input">
-                <p class="input_option">Övrig</p><input type="text" name="" size="" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
-              </div>
-              <div class="col-xs-12 box-content-input">
-                <p class="input_option">Telefonnummer</p><input type="text" name="" size="" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
+                <p class="input_option">Telefonnummer</p><input type="text" name="" size="30" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
               </div>
 
               <div class="col-xs-12 box-content-input" style="border-top: 1px solid lightblue;"></div>
               <div class="col-xs-12 box-content-input">
-                <p class="input_option">Övrig</p><input type="text" name="" size="" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
+                <p class="input_option">Kontaktpersonal</p><input type="text" name="" size="30" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
               </div>
               <div class="col-xs-12 box-content-input">
-                <p class="input_option">Telefonnummer</p><input type="text" name="" size="" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
+                <p class="input_option">Telefonnummer</p><input type="text" name="" size="30" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
+              </div>
+
+              <div class="col-xs-12 box-content-input" style="border-top: 1px solid lightblue;"></div>
+              <div class="col-xs-12 box-content-input">
+                <p class="input_option">Övrig</p><input type="text" name="" size="30" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
+              </div>
+              <div class="col-xs-12 box-content-input">
+                <p class="input_option">Telefonnummer</p><input type="text" name="" size="30" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
+              </div>
+
+              <div class="col-xs-12 box-content-input" style="border-top: 1px solid lightblue;"></div>
+              <div class="col-xs-12 box-content-input">
+                <p class="input_option">Övrig</p><input type="text" name="" size="30" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
+              </div>
+              <div class="col-xs-12 box-content-input">
+                <p class="input_option">Telefonnummer</p><input type="text" name="" size="30" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
               </div>
 
               <div class="col-xs-12 box-content-input" style="border-top: 1px solid lightblue;"></div>
@@ -243,7 +243,7 @@
                 <p class="input_option">Ansvarig för upprättelse av plan:</p>
               </div>
               <div class="col-xs-12 box-content-input">
-                <p class="input_option">Namn</p><input type="text" name="" size="" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
+                <p class="input_option">Namn</p><input type="text" name="" size="30" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
               </div>
 
               <div class="col-xs-12 box-content-input" style="background: lightblue;">
@@ -260,7 +260,7 @@
                 <input type="radio" name="self_radio1" value="Ja" /><span>Ja</span>
                 <input type="radio" name="self_radio1" value="Nej" /><span>Nej</span>
                 <textarea name="" rows="3" style="width:100%" placeholder="Behöver hjälp med – hur ges hjälpen"><?php echo (!empty($user_data[''])?$user_data['']:'');?></textarea>
-                <input type="text" name="" size="" placeholder="När ges hjälpen" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
+                <input type="text" name="" size="30" placeholder="När ges hjälpen" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
               </div>
               <div class="col-xs-12 box-content-input">
                 <p class="input_option">• Tvättar sig</p>
@@ -270,7 +270,7 @@
                 <input type="radio" name="self_radio2" value="Ja" /><span>Ja</span>
                 <input type="radio" name="self_radio2" value="Nej" /><span>Nej</span>
                 <textarea name="" rows="3" style="width:100%" placeholder="Behöver hjälp med – hur ges hjälpen"><?php echo (!empty($user_data[''])?$user_data['']:'');?></textarea>
-                <input type="text" name="" size="" placeholder="När ges hjälpen" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
+                <input type="text" name="" size="30" placeholder="När ges hjälpen" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
               </div>
               <div class="col-xs-12 box-content-input">
                 <p class="input_option">• Nagelvård</p>
@@ -280,7 +280,7 @@
                 <input type="radio" name="self_radio3" value="Ja" /><span>Ja</span>
                 <input type="radio" name="self_radio3" value="Nej" /><span>Nej</span>
                 <textarea name="" rows="3" style="width:100%" placeholder="Behöver hjälp med – hur ges hjälpen"><?php echo (!empty($user_data[''])?$user_data['']:'');?></textarea>
-                <input type="text" name="" size="" placeholder="När ges hjälpen" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
+                <input type="text" name="" size="30" placeholder="När ges hjälpen" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
               </div>
               <div class="col-xs-12 box-content-input">
                 <p class="input_option">• Hårvård och Rakning</p>
@@ -290,7 +290,7 @@
                 <input type="radio" name="self_radio4" value="Ja" /><span>Ja</span>
                 <input type="radio" name="self_radio4" value="Nej" /><span>Nej</span>
                 <textarea name="" rows="3" style="width:100%" placeholder="Behöver hjälp med – hur ges hjälpen"><?php echo (!empty($user_data[''])?$user_data['']:'');?></textarea>
-                <input type="text" name="" size="" placeholder="När ges hjälpen" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
+                <input type="text" name="" size="30" placeholder="När ges hjälpen" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
               </div>
               <div class="col-xs-12 box-content-input">
                 <p class="input_option">• Inkontinens‐ hjälpmedel</p>
@@ -300,7 +300,7 @@
                 <input type="radio" name="self_radio5" value="Ja" /><span>Ja</span>
                 <input type="radio" name="self_radio5" value="Nej" /><span>Nej</span>
                 <textarea name="" rows="3" style="width:100%" placeholder="Behöver hjälp med – hur ges hjälpen"><?php echo (!empty($user_data[''])?$user_data['']:'');?></textarea>
-                <input type="text" name="" size="" placeholder="När ges hjälpen" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
+                <input type="text" name="" size="30" placeholder="När ges hjälpen" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
               </div>
               <div class="col-xs-12 box-content-input">
                 <p class="input_option">• På‐ och avklädning</p>
@@ -310,7 +310,7 @@
                 <input type="radio" name="self_radio6" value="Ja" /><span>Ja</span>
                 <input type="radio" name="self_radio6" value="Nej" /><span>Nej</span>
                 <textarea name="" rows="3" style="width:100%" placeholder="Behöver hjälp med – hur ges hjälpen"><?php echo (!empty($user_data[''])?$user_data['']:'');?></textarea>
-                <input type="text" name="" size="" placeholder="När ges hjälpen" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
+                <input type="text" name="" size="30" placeholder="När ges hjälpen" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
               </div>
 
               <div class="col-xs-12 box-content-input">
@@ -330,7 +330,7 @@
                 <input type="radio" name="self_radio7" value="Ja" /><span>Ja</span>
                 <input type="radio" name="self_radio7" value="Nej" /><span>Nej</span>
                 <textarea name="" rows="3" style="width:100%" placeholder="Behöver hjälp med – hur ges hjälpen"><?php echo (!empty($user_data[''])?$user_data['']:'');?></textarea>
-                <input type="text" name="" size="" placeholder="När ges hjälpen" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
+                <input type="text" name="" size="30" placeholder="När ges hjälpen" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
               </div>
               <div class="col-xs-12 box-content-input">
                 <p class="input_option">• Intressen</p>
@@ -340,7 +340,7 @@
                 <input type="radio" name="self_radio8" value="Ja" /><span>Ja</span>
                 <input type="radio" name="self_radio8" value="Nej" /><span>Nej</span>
                 <textarea name="" rows="3" style="width:100%" placeholder="Behöver hjälp med – hur ges hjälpen"><?php echo (!empty($user_data[''])?$user_data['']:'');?></textarea>
-                <input type="text" name="" size="" placeholder="När ges hjälpen" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
+                <input type="text" name="" size="30" placeholder="När ges hjälpen" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
               </div>
               <div class="col-xs-12 box-content-input">
                 <p class="input_option">• Aktiviteter</p>
@@ -350,7 +350,7 @@
                 <input type="radio" name="self_radio9" value="Ja" /><span>Ja</span>
                 <input type="radio" name="self_radio9" value="Nej" /><span>Nej</span>
                 <textarea name="" rows="3" style="width:100%" placeholder="Behöver hjälp med – hur ges hjälpen"><?php echo (!empty($user_data[''])?$user_data['']:'');?></textarea>
-                <input type="text" name="" size="" placeholder="När ges hjälpen" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
+                <input type="text" name="" size="30" placeholder="När ges hjälpen" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
               </div>
               <div class="col-xs-12 box-content-input">
                 <p class="input_option">Särskilda behov och önskemål angående aktivering, intressen och sociala kontakter:</p>
@@ -369,7 +369,7 @@
                 <input type="radio" name="self_radio10" value="Ja" /><span>Ja</span>
                 <input type="radio" name="self_radio10" value="Nej" /><span>Nej</span>
                 <textarea name="" rows="3" style="width:100%" placeholder="Behöver hjälp med – hur ges hjälpen"><?php echo (!empty($user_data[''])?$user_data['']:'');?></textarea>
-                <input type="text" name="" size="" placeholder="När ges hjälpen" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
+                <input type="text" name="" size="30" placeholder="När ges hjälpen" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
               </div>
               <div class="col-xs-12 box-content-input">
                 <p class="input_option">• Bäddning</p>
@@ -379,7 +379,7 @@
                 <input type="radio" name="self_radio11" value="Ja" /><span>Ja</span>
                 <input type="radio" name="self_radio11" value="Nej" /><span>Nej</span>
                 <textarea name="" rows="3" style="width:100%" placeholder="Behöver hjälp med – hur ges hjälpen"><?php echo (!empty($user_data[''])?$user_data['']:'');?></textarea>
-                <input type="text" name="" size="" placeholder="När ges hjälpen" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
+                <input type="text" name="" size="30" placeholder="När ges hjälpen" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
               </div>
               <div class="col-xs-12 box-content-input">
                 <p class="input_option">• Inköp</p>
@@ -389,7 +389,7 @@
                 <input type="radio" name="self_radio12" value="Ja" /><span>Ja</span>
                 <input type="radio" name="self_radio12" value="Nej" /><span>Nej</span>
                 <textarea name="" rows="3" style="width:100%" placeholder="Behöver hjälp med – hur ges hjälpen"><?php echo (!empty($user_data[''])?$user_data['']:'');?></textarea>
-                <input type="text" name="" size="" placeholder="När ges hjälpen" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
+                <input type="text" name="" size="30" placeholder="När ges hjälpen" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
               </div>
               <div class="col-xs-12 box-content-input">
                 <p class="input_option">• Tvätt</p>
@@ -399,7 +399,7 @@
                 <input type="radio" name="self_radio13" value="Ja" /><span>Ja</span>
                 <input type="radio" name="self_radio13" value="Nej" /><span>Nej</span>
                 <textarea name="" rows="3" style="width:100%" placeholder="Behöver hjälp med – hur ges hjälpen"><?php echo (!empty($user_data[''])?$user_data['']:'');?></textarea>
-                <input type="text" name="" size="" placeholder="När ges hjälpen" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
+                <input type="text" name="" size="30" placeholder="När ges hjälpen" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
               </div>
               <div class="col-xs-12 box-content-input">
                 <p class="input_option">• Vattna blommor</p>
@@ -409,7 +409,7 @@
                 <input type="radio" name="self_radio14" value="Ja" /><span>Ja</span>
                 <input type="radio" name="self_radio14" value="Nej" /><span>Nej</span>
                 <textarea name="" rows="3" style="width:100%" placeholder="Behöver hjälp med – hur ges hjälpen"><?php echo (!empty($user_data[''])?$user_data['']:'');?></textarea>
-                <input type="text" name="" size="" placeholder="När ges hjälpen" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
+                <input type="text" name="" size="30" placeholder="När ges hjälpen" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
               </div>
               <div class="col-xs-12 box-content-input">
                 <p class="input_option">Särskilda behov och önskemål angående bostaden:</p>
@@ -428,7 +428,7 @@
                 <input type="radio" name="self_radio15" value="Ja" /><span>Ja</span>
                 <input type="radio" name="self_radio15" value="Nej" /><span>Nej</span>
                 <textarea name="" rows="3" style="width:100%" placeholder="Behöver hjälp med – hur ges hjälpen"><?php echo (!empty($user_data[''])?$user_data['']:'');?></textarea>
-                <input type="text" name="" size="" placeholder="När ges hjälpen" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
+                <input type="text" name="" size="30" placeholder="När ges hjälpen" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
               </div>
               <div class="col-xs-12 box-content-input">
                 <p class="input_option">• Hörsel</p>
@@ -438,7 +438,7 @@
                 <input type="radio" name="self_radio16" value="Ja" /><span>Ja</span>
                 <input type="radio" name="self_radio16" value="Nej" /><span>Nej</span>
                 <textarea name="" rows="3" style="width:100%" placeholder="Behöver hjälp med – hur ges hjälpen"><?php echo (!empty($user_data[''])?$user_data['']:'');?></textarea>
-                <input type="text" name="" size="" placeholder="När ges hjälpen" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
+                <input type="text" name="" size="30" placeholder="När ges hjälpen" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
               </div>
               <div class="col-xs-12 box-content-input">
                 <p class="input_option">• Kan tala</p>
@@ -448,7 +448,7 @@
                 <input type="radio" name="self_radio17" value="Ja" /><span>Ja</span>
                 <input type="radio" name="self_radio17" value="Nej" /><span>Nej</span>
                 <textarea name="" rows="3" style="width:100%" placeholder="Behöver hjälp med – hur ges hjälpen"><?php echo (!empty($user_data[''])?$user_data['']:'');?></textarea>
-                <input type="text" name="" size="" placeholder="När ges hjälpen" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
+                <input type="text" name="" size="30" placeholder="När ges hjälpen" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
               </div>
               <div class="col-xs-12 box-content-input">
                 <p class="input_option">• Ordförståelse</p>
@@ -458,7 +458,7 @@
                 <input type="radio" name="self_radio18" value="Ja" /><span>Ja</span>
                 <input type="radio" name="self_radio18" value="Nej" /><span>Nej</span>
                 <textarea name="" rows="3" style="width:100%" placeholder="Behöver hjälp med – hur ges hjälpen"><?php echo (!empty($user_data[''])?$user_data['']:'');?></textarea>
-                <input type="text" name="" size="" placeholder="När ges hjälpen" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
+                <input type="text" name="" size="30" placeholder="När ges hjälpen" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
               </div>
               <div class="col-xs-12 box-content-input">
                 <p class="input_option">• Annat</p>
@@ -468,7 +468,7 @@
                 <input type="radio" name="self_radio19" value="Ja" /><span>Ja</span>
                 <input type="radio" name="self_radio19" value="Nej" /><span>Nej</span>
                 <textarea name="" rows="3" style="width:100%" placeholder="Behöver hjälp med – hur ges hjälpen"><?php echo (!empty($user_data[''])?$user_data['']:'');?></textarea>
-                <input type="text" name="" size="" placeholder="När ges hjälpen" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
+                <input type="text" name="" size="30" placeholder="När ges hjälpen" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
               </div>
 
               <div class="col-xs-12 box-content-input" style="border-top: 1px solid lightblue;"></div>
@@ -483,7 +483,7 @@
                 <input type="radio" name="self_radio20" value="Ja" /><span>Ja</span>
                 <input type="radio" name="self_radio20" value="Nej" /><span>Nej</span>
                 <textarea name="" rows="3" style="width:100%" placeholder="Behöver hjälp med – hur ges hjälpen"><?php echo (!empty($user_data[''])?$user_data['']:'');?></textarea>
-                <input type="text" name="" size="" placeholder="När ges hjälpen" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
+                <input type="text" name="" size="30" placeholder="När ges hjälpen" value="<?php echo (!empty($user_data[''])?$user_data['']:'');?>">
               </div>
               <div class="col-xs-12 box-content-input">
                 <p class="input_option">Särskilda behov och önskemål angående sömn/nattillsyn:</p>

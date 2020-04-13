@@ -1,7 +1,7 @@
 <body class="hold-transition login-page">
   <div class="login-box">
     <div class="login-logo">
-      <a href="<?php echo base_url(); ?>"><b>Annas</b></a>
+      <a href="<?php echo base_url(); ?>"><b>Annas Vård och hemtjänstteam AB</b></a>
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">

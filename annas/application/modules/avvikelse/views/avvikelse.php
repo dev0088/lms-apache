@@ -105,8 +105,11 @@
               <div class="col-xs-12 box-content-input">
                 <p class="input_option">• Ev. direkt utförd handling för att undvika mer skada</p><textarea name="suggestion" rows="5" style="width:100%"><?php echo (!empty($user_data['suggestion'])?$user_data['suggestion']:'');?></textarea>
               </div>
+              <div class="col-xs-12 box-content-input" style="background: lightblue;">
+                <p class="input_option" style="background: lightblue;padding-top:5px;">Verksamhetschefs åtgärder</p>
+              </div>
               <div class="col-xs-12 box-content-input">
-                <p class="input_option" style="background: lightblue;">Verksamhetschefs åtgärder</p><textarea name="admin_remark" rows="5" style="width:100%"><?php echo (!empty($user_data['admin_remark'])?$user_data['admin_remark']:'');?></textarea>
+                <textarea name="admin_remark" rows="5" style="width:100%"><?php echo (!empty($user_data['admin_remark'])?$user_data['admin_remark']:'');?></textarea>
               </div>
               
               <!-- <div class="col-xs-12 box-content-input">
