@@ -6,7 +6,8 @@
 	<body class="hold-transition register-page">
     <div class="register-box">
       <div class="register-logo">
-        <a href="<?php echo base_url(); ?>"><b>Annas Vård och hemtjänstteam AB</b></a>
+        <a href="<?php echo base_url(); ?>"><b>Annas</b>
+        <p>Vård och hemtjänstteam AB</p></a>
       </div>
       <div class="register-box-body">
         <p class="login-box-msg">Register a new membership</p>
