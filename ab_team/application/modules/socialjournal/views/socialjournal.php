@@ -28,7 +28,7 @@
             <div class="box-header with-border">
               <h3 class="box-title" style="color: #00c0ef!important;font-weight:600;">SOCIAL JOURNAL FÖR GENOMFÖRANDE</h3>
               <div class="box-tools">
-                <button type="submit" class="btn-sm  btn btn-success modalButtonUser"><i class="glyphicon glyphicon-plus"></i> Submit</button>
+                <button type="submit" class="btn-sm  btn btn-success modalButtonUser"><i class="glyphicon glyphicon-plus"></i> Spara</button>
 
                 <!-- 
                 <?php if(CheckPermission("users", "own_create")){ ?>
