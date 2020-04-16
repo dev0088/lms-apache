@@ -213,7 +213,14 @@ class Gp extends CI_Controller {
           <?php
             ob_start();
           ?>
+          <html>
+          <meta charset="UTF-8">
+          <body>
           <div class="box-body">
+            <div class="col-xs-12" style="text-align:center; margin-bottom: 10px;">
+              <h1 style="color: #00c0ef!important;">Genomförandeplan</h1>
+              <h4 style="color: #00c0ef!important;">Annas vård och hemtjänstteam AB</h4>
+            </div>
             <div class="col-xs-12 box-content-input">
               <h4 style="font-weight: 600;">Datum: <span style="font-weight: normal;"><?php echo $gp_data['date'];?></span></h4>
             </div>
@@ -597,6 +604,8 @@ class Gp extends CI_Controller {
             </div>
 
           </div>
+          </body>
+          </html>
           <?php
             file_put_contents($forum_data['html_file'], ob_get_contents());
           ?>
