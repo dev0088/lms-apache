@@ -27,7 +27,7 @@ class User extends CI_Controller {
     		redirect( base_url().'user/profile', 'refresh');
     	}   
     	$this->load->view('include/script');
-        $this->load->view('login'); 
+        //$this->load->view('login'); 
     }
 
     /**
