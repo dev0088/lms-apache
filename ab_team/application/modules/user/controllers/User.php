@@ -24,7 +24,7 @@ class User extends CI_Controller {
       */
     public function login(){
     	if(isset($_SESSION['user_details'])){
-    		redirect( base_url().'user/profile', 'refresh');
+    		redirect( base_url().'user/forum', 'refresh');
     	}   
     	$this->load->view('include/script');
         //$this->load->view('login'); 
